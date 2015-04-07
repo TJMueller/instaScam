@@ -15,33 +15,67 @@
 @property (strong, nonatomic) IBOutlet UITextField *passwordConfirmationTextField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
 
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    PFUser *user = [PFUser user];
-    user.username = @"trial";
-    user.password = @"pass";
-    user.email = @"email3@example.com";
+    self.passwordConfirmationTextField.alpha = 0;
+    self.nameTextField.alpha = 0;
+    self.emailTextField.alpha = 0;
 
-    // other fields can be set if you want to save more information
-    user[@"phone"] = @"650-555-0000";
-
-    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            // Hooray! Let them use the app now.
-        } else {
-            NSString *errorString = [error userInfo][@"error"];
-            // Show the errorString somewhere and let the user try again.
-        }
-    }];
 }
 
 - (IBAction)onLogInButtonPressed:(id)sender {
+    [self.usernameTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
 }
 - (IBAction)onSignUpButtonPressed:(id)sender {
+    [self.usernameTextField resignFirstResponder];
+    [self.emailTextField resignFirstResponder];
+    [self.passwordConfirmationTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+    [self checkFieldsComplete];
+}
+
+- (void) checkFieldsComplete { 
+    if ([self.usernameTextField.text isEqualToString:@""] || [self.emailTextField.text isEqualToString:@""] || [self.passwordTextField.text isEqualToString:@""] || [self.passwordConfirmationTextField.text isEqualToString:@""]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oooopss!" message:@"You need to complete all fields" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+    else {
+        [self checkPasswordsMatch];
+    }
+}
+
+- (void) checkPasswordsMatch {
+    if (![self.passwordTextField.text isEqualToString:self.passwordConfirmationTextField.text]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oooopss!" message:@"Passwords don't match" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+    else {
+        [self registerNewUser];
+    }
+}
+
+- (void) registerNewUser {
+    NSLog(@"registering....");
+    PFUser *newUser = [PFUser user];
+    newUser.username = self.usernameTextField.text;
+    newUser.email = self.emailTextField.text;
+    newUser.password = self.passwordTextField.text;
+
+    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            NSLog(@"Registration success!");
+            //[self performSegueWithIdentifier:@"login" sender:self];
+        }
+        else {
+            NSLog(@"There was an error in registration");
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

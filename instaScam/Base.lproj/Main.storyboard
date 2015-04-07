@@ -117,8 +117,8 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="emailTextField" destination="LbG-ls-5xE" id="pQh-Ju-H8p"/>
-                        <outlet property="nameTextField" destination="BvR-1C-QNP" id="z0z-pH-N5v"/>
+                        <outlet property="emailTextField" destination="LbG-ls-5xE" id="bLM-Xn-TAB"/>
+                        <outlet property="nameTextField" destination="BvR-1C-QNP" id="Zlv-G2-AYm"/>
                         <outlet property="passwordConfirmationTextField" destination="1G3-Py-jzS" id="dJ6-cZ-uKq"/>
                         <outlet property="passwordTextField" destination="WSa-vZ-zUa" id="hDL-RQ-dXg"/>
                         <outlet property="usernameTextField" destination="zXH-t9-1r4" id="uFc-gH-h2j"/>
