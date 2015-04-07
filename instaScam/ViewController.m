@@ -46,37 +46,36 @@
         NSLog(@"The number is %@", phone);
 
 // posting a comment (with post pointer)
-        PFUser * user = [PFUser currentUser];
-        PFObject * comment = [PFObject objectWithClassName:@"Comment"];
-        PFObject * post = [PFObject objectWithClassName:@"Post"];
-        comment[@"commentText"] = @"a comment";
-        comment[@"post"]= post;
-        user[@"public"] = [NSNumber numberWithBool:YES];
-        post[@"user"] = user;
-        NSMutableArray *array = [[NSMutableArray alloc]initWithObjects:post, nil];
-        user[@"posts"] = array;
-        [user saveInBackground];
-        [post saveInBackground];
-        [comment saveInBackground];
+        //PFUser * user = [PFUser currentUser];
+//        PFObject * comment = [PFObject objectWithClassName:@"Comment"];
+//        PFObject * post = [PFObject objectWithClassName:@"Post"];
+//        comment[@"commentText"] = @"a comment";
+//        comment[@"post"]= post;
+//        user[@"public"] = [NSNumber numberWithBool:YES];
+//        post[@"user"] = user;
+
+//        [user saveInBackground];
+//        [post saveInBackground];
+//        [comment saveInBackground];
 
 
 
-        PFQuery *commentQuery = [PFQuery queryWithClassName:@"Comment"];
-        [commentQuery includeKey:@"post.objectId"];
-
-
-        [commentQuery findObjectsInBackgroundWithBlock:^(NSArray *newsObjects, NSError *error)
-        {
-            if( !error )
-            {
-                NSLog(@"%@", newsObjects);
-                NSArray *queryArray = [[PFUser currentUser] objectForKeyedSubscript:@"posts"];
-                //NSLog(@"query array %@",queryArray[0]);
-                
-                NSString *user5 = [queryArray[0] objectForKey:@"user"];
-                NSLog(@"The user.............. is %@", user5);
-            }
-        }];
+//        PFQuery *commentQuery = [PFQuery queryWithClassName:@"Comment"];
+//        [commentQuery includeKey:@"post.objectId"];
+//
+//
+//        [commentQuery findObjectsInBackgroundWithBlock:^(NSArray *newsObjects, NSError *error)
+//        {
+//            if( !error )
+//            {
+//                NSLog(@"%@", newsObjects);
+//                NSArray *queryArray = [[PFUser currentUser] objectForKeyedSubscript:@"posts"];
+//                //NSLog(@"query array %@",queryArray[0]);
+//                
+//                NSString *user5 = [queryArray[0] objectForKey:@"user"];
+//                NSLog(@"The user.............. is %@", user5);
+//            }
+//        }];
 
 
 
@@ -158,6 +157,12 @@
     newUser.username = self.usernameTextField.text;
     newUser.email = self.emailTextField.text;
     newUser.password = self.passwordTextField.text;
+    PFObject * person = [PFObject objectWithClassName:@"Person"];
+    person[@"email"] = self.emailTextField.text;
+    person[@"userName"] = self.usernameTextField.text;
+    [person saveInBackground];
+    newUser[@"person"] = person;
+
 
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
