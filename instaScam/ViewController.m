@@ -9,6 +9,11 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (strong, nonatomic) IBOutlet UITextField *nameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *emailTextField;
+@property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *passwordConfirmationTextField;
+@property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
 
 @end
 
@@ -32,6 +37,11 @@
             // Show the errorString somewhere and let the user try again.
         }
     }];
+}
+
+- (IBAction)onLogInButtonPressed:(id)sender {
+}
+- (IBAction)onSignUpButtonPressed:(id)sender {
 }
 
 - (void)didReceiveMemoryWarning {
