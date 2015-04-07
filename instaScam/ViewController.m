@@ -39,6 +39,53 @@
     PFUser *user = [PFUser currentUser];
     if (user.username != nil) {
         NSLog(@"I remember");
+
+
+//currentUser is our object
+        NSString *phone = [[PFUser currentUser] objectForKey:@"phone"];
+        NSLog(@"The number is %@", phone);
+
+// posting a comment (with post pointer)
+        PFUser * user = [PFUser currentUser];
+        PFObject * comment = [PFObject objectWithClassName:@"Comment"];
+        PFObject * post = [PFObject objectWithClassName:@"Post"];
+        comment[@"commentText"] = @"a comment";
+        comment[@"post"]= post;
+        user[@"public"] = [NSNumber numberWithBool:YES];
+        post[@"user"] = user;
+        NSMutableArray *array = [[NSMutableArray alloc]initWithObjects:post, nil];
+        user[@"posts"] = array;
+        [user saveInBackground];
+        [post saveInBackground];
+        [comment saveInBackground];
+
+
+
+        PFQuery *commentQuery = [PFQuery queryWithClassName:@"Comment"];
+        [commentQuery includeKey:@"post.objectId"];
+
+
+        [commentQuery findObjectsInBackgroundWithBlock:^(NSArray *newsObjects, NSError *error)
+        {
+            if( !error )
+            {
+                NSLog(@"%@", newsObjects);
+                NSArray *queryArray = [[PFUser currentUser] objectForKeyedSubscript:@"posts"];
+                //NSLog(@"query array %@",queryArray[0]);
+                
+                NSString *user5 = [queryArray[0] objectForKey:@"user"];
+                NSLog(@"The user.............. is %@", user5);
+            }
+        }];
+
+
+
+
+
+        // to log out
+        
+        //[PFUser logOut];
+
         //[self performSegueWithIdentifier:@"login" sender:self];
     }
 }
