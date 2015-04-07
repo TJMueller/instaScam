@@ -14,7 +14,9 @@
 @property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordConfirmationTextField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (strong, nonatomic) IBOutlet UIButton *logInButton;
 
+@property (strong, nonatomic) IBOutlet UIButton *signUpButton;
 
 @end
 
@@ -22,9 +24,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.passwordConfirmationTextField.alpha = 0;
-    self.nameTextField.alpha = 0;
-    self.emailTextField.alpha = 0;
+//    self.passwordConfirmationTextField.alpha = 0;
+//    self.nameTextField.alpha = 0;
+//    self.emailTextField.alpha = 0;
 
 }
 
@@ -37,6 +39,7 @@
     [self.emailTextField resignFirstResponder];
     [self.passwordConfirmationTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
+    //todo alpha level 0 on
     [self checkFieldsComplete];
 }
 

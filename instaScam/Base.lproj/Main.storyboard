@@ -43,7 +43,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Your Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1G3-Py-jzS">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="64" y="294" width="272" height="30"/>
                                 </variation>
@@ -51,7 +51,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WSa-vZ-zUa">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="64" y="239" width="272" height="30"/>
                                 </variation>
@@ -117,10 +117,12 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="emailTextField" destination="LbG-ls-5xE" id="bLM-Xn-TAB"/>
-                        <outlet property="nameTextField" destination="BvR-1C-QNP" id="Zlv-G2-AYm"/>
+                        <outlet property="emailTextField" destination="LbG-ls-5xE" id="pQh-Ju-H8p"/>
+                        <outlet property="logInButton" destination="uEH-Y6-fhG" id="Dyw-cb-tcd"/>
+                        <outlet property="nameTextField" destination="BvR-1C-QNP" id="z0z-pH-N5v"/>
                         <outlet property="passwordConfirmationTextField" destination="1G3-Py-jzS" id="dJ6-cZ-uKq"/>
                         <outlet property="passwordTextField" destination="WSa-vZ-zUa" id="hDL-RQ-dXg"/>
+                        <outlet property="signUpButton" destination="BlE-wn-HVV" id="bau-cn-2f5"/>
                         <outlet property="usernameTextField" destination="zXH-t9-1r4" id="uFc-gH-h2j"/>
                     </connections>
                 </viewController>
