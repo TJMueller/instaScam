@@ -73,7 +73,7 @@
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             NSLog(@"Registration success!");
-            //[self performSegueWithIdentifier:@"login" sender:self];
+            [self performSegueWithIdentifier:@"login" sender:self];
         }
         else {
             NSLog(@"There was an error in registration");

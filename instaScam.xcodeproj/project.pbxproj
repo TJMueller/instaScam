@@ -33,6 +33,9 @@
 		23AEDA261AD4188700DB8A42 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23AEDA141AD4176C00DB8A42 /* Security.framework */; };
 		23AEDA271AD4188E00DB8A42 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23AEDA121AD4176300DB8A42 /* QuartzCore.framework */; };
 		23AEDA281AD4189D00DB8A42 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23AEDA101AD4175C00DB8A42 /* MobileCoreServices.framework */; };
+		D6C833D61AD4446B006BB213 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C833D51AD4446B006BB213 /* HomeViewController.m */; };
+		D6C833E51AD46C05006BB213 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C833E41AD46C05006BB213 /* HomeTableViewCell.m */; };
+		D6C833E81AD46F92006BB213 /* HomeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C833E71AD46F92006BB213 /* HomeDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +81,12 @@
 		23AEDA1A1AD4178D00DB8A42 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		23AEDA1C1AD4179800DB8A42 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		23AEDA1E1AD417A500DB8A42 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		D6C833D41AD4446B006BB213 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		D6C833D51AD4446B006BB213 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		D6C833E31AD46C05006BB213 /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
+		D6C833E41AD46C05006BB213 /* HomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
+		D6C833E61AD46F92006BB213 /* HomeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDetailViewController.h; sourceTree = "<group>"; };
+		D6C833E71AD46F92006BB213 /* HomeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +152,12 @@
 				2374D30B1AD3317A00F7B3DB /* AppDelegate.m */,
 				2374D30D1AD3317A00F7B3DB /* ViewController.h */,
 				2374D30E1AD3317A00F7B3DB /* ViewController.m */,
+				D6C833D41AD4446B006BB213 /* HomeViewController.h */,
+				D6C833D51AD4446B006BB213 /* HomeViewController.m */,
+				D6C833E61AD46F92006BB213 /* HomeDetailViewController.h */,
+				D6C833E71AD46F92006BB213 /* HomeDetailViewController.m */,
+				D6C833E31AD46C05006BB213 /* HomeTableViewCell.h */,
+				D6C833E41AD46C05006BB213 /* HomeTableViewCell.m */,
 				2374D3101AD3317A00F7B3DB /* Main.storyboard */,
 				2374D3131AD3317A00F7B3DB /* Images.xcassets */,
 				2374D3151AD3317A00F7B3DB /* LaunchScreen.xib */,
@@ -311,9 +326,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6C833E81AD46F92006BB213 /* HomeDetailViewController.m in Sources */,
 				2374D30F1AD3317A00F7B3DB /* ViewController.m in Sources */,
 				2374D30C1AD3317A00F7B3DB /* AppDelegate.m in Sources */,
+				D6C833E51AD46C05006BB213 /* HomeTableViewCell.m in Sources */,
 				2374D3091AD3317A00F7B3DB /* main.m in Sources */,
+				D6C833D61AD4446B006BB213 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
