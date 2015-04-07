@@ -7,10 +7,13 @@
 //
 
 #import "HomeViewController.h"
+#import "HomeDetailViewController.h"
+#import "HomeTableViewCell.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property NSArray *postsArray;
 @property (weak, nonatomic) IBOutlet UITableView *homeTableView;
-@property (weak, nonatomic) IBOutlet UIImageView *postImageView;
 
 @end
 
@@ -18,8 +21,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
 }
 
+#pragma mark - TableView Delegates
 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.postsArray.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
+
+    cell.backgroundColor = [UIColor blackColor];
+
+    return  cell;
+}
+
+-(IBAction)unwindFromSegue:(UIStoryboardSegue *)segue {
+    
+}
 
 @end

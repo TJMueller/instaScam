@@ -20,14 +20,4 @@
     // Configure the view for the selected state
 }
 
-// TO-DO "Likes" button --> might trigger a segue; check out instagram for example
-
-- (IBAction)onLikeButtonPressed:(UIButton *)sender {
-
-}
-
-- (IBAction)onCommentButtonPressed:(UIButton *)sender {
-
-}
-
 @end
