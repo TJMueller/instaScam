@@ -5,6 +5,8 @@
 //  Created by Timothy Mueller on 4/6/15.
 //  Copyright (c) 2015 Timothy Mueller. All rights reserved.
 //
+// to do set up segues
+
 
 #import "ViewController.h"
 
@@ -15,8 +17,9 @@
 @property (strong, nonatomic) IBOutlet UITextField *passwordConfirmationTextField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (strong, nonatomic) IBOutlet UIButton *logInButton;
-
 @property (strong, nonatomic) IBOutlet UIButton *signUpButton;
+@property BOOL signUp;
+@property BOOL logIn;
 
 @end
 
@@ -24,23 +27,108 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.passwordConfirmationTextField.alpha = 0;
-//    self.nameTextField.alpha = 0;
-//    self.emailTextField.alpha = 0;
+    self.passwordConfirmationTextField.alpha = 0;
+    self.nameTextField.alpha = 0;
+    self.emailTextField.alpha = 0;
+    self.signUp = NO;
+    self.logIn = YES;
 
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    PFUser *user = [PFUser currentUser];
+    if (user.username != nil) {
+        NSLog(@"I remember");
+
+
+//currentUser is our object
+        NSString *phone = [[PFUser currentUser] objectForKey:@"phone"];
+        NSLog(@"The number is %@", phone);
+
+// posting a comment (with post pointer)
+        //PFUser * user = [PFUser currentUser];
+//        PFObject * comment = [PFObject objectWithClassName:@"Comment"];
+//        PFObject * post = [PFObject objectWithClassName:@"Post"];
+//        comment[@"commentText"] = @"a comment";
+//        comment[@"post"]= post;
+//        user[@"public"] = [NSNumber numberWithBool:YES];
+//        post[@"user"] = user;
+
+//        [user saveInBackground];
+//        [post saveInBackground];
+//        [comment saveInBackground];
+
+
+
+//        PFQuery *commentQuery = [PFQuery queryWithClassName:@"Comment"];
+//        [commentQuery includeKey:@"post.objectId"];
+//
+//
+//        [commentQuery findObjectsInBackgroundWithBlock:^(NSArray *newsObjects, NSError *error)
+//        {
+//            if( !error )
+//            {
+//                NSLog(@"%@", newsObjects);
+//                NSArray *queryArray = [[PFUser currentUser] objectForKeyedSubscript:@"posts"];
+//                //NSLog(@"query array %@",queryArray[0]);
+//                
+//                NSString *user5 = [queryArray[0] objectForKey:@"user"];
+//                NSLog(@"The user.............. is %@", user5);
+//            }
+//        }];
+
+
+
+
+
+        // to log out
+        
+        //[PFUser logOut];
+
+        //[self performSegueWithIdentifier:@"login" sender:self];
+    }
 }
 
 - (IBAction)onLogInButtonPressed:(id)sender {
     [self.usernameTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
+    if (self.logIn) {
+        [PFUser logInWithUsernameInBackground:self.usernameTextField.text password:self.passwordTextField.text block:^(PFUser *user, NSError *error) {
+            if (!error) {
+                NSLog(@"Login user!");
+                self.usernameTextField.text = nil;
+                self.passwordTextField.text = nil;
+                //[self performSegueWithIdentifier:@"login" sender:self];
+            }
+            if (error) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ooops!" message:@"Sorry we had a problem logging you in" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+            }
+        }];
+    }else {
+        self.passwordConfirmationTextField.alpha = 0;
+        self.nameTextField.alpha = 0;
+        self.emailTextField.alpha = 0;
+        self.signUp = !self.signUp;
+        self.logIn = !self.logIn;
+    }
+
 }
 - (IBAction)onSignUpButtonPressed:(id)sender {
     [self.usernameTextField resignFirstResponder];
     [self.emailTextField resignFirstResponder];
     [self.passwordConfirmationTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
-    //todo alpha level 0 on
-    [self checkFieldsComplete];
+    self.passwordConfirmationTextField.alpha = 1;
+    self.nameTextField.alpha = 1;
+    self.emailTextField.alpha = 1;
+    //self.logInButton.alpha = 0;
+    if (self.signUp) {
+        [self checkFieldsComplete];
+    }
+    self.signUp = !self.signUp;
+    self.logIn = !self.logIn;
+
 }
 
 - (void) checkFieldsComplete { 
@@ -69,6 +157,12 @@
     newUser.username = self.usernameTextField.text;
     newUser.email = self.emailTextField.text;
     newUser.password = self.passwordTextField.text;
+    PFObject * person = [PFObject objectWithClassName:@"Person"];
+    person[@"email"] = self.emailTextField.text;
+    person[@"userName"] = self.usernameTextField.text;
+    [person saveInBackground];
+    newUser[@"person"] = person;
+
 
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
