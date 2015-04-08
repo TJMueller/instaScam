@@ -9,6 +9,8 @@
 #import "CameraViewController.h"
 
 @interface CameraViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *commentTextField;
+@property (weak, nonatomic) IBOutlet UIImageView *postImageView;
 
 @end
 
@@ -22,6 +24,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)takePictureButtonPressed:(UIButton *)sender {
+
+}
+
+- (IBAction)choosePictureButtonPressed:(UIButton *)sender {
+    
 }
 
 /*
