@@ -8,6 +8,7 @@
 
 #import "Post.h"
 #import <parse/PFObject+Subclass.h>
+#import "HomeViewController.h"
 
 @implementation Post
 @dynamic title;
@@ -17,6 +18,7 @@
 @dynamic tags;
 @dynamic comments;
 
+UIImage *image;
 
 + (instancetype)createPostWithPhoto:(UIImage *)photo
 {
@@ -31,6 +33,11 @@
     return post;
 }
 
+- (UIImage *)convertToImage {
+    NSLog(@"fetching image");
+    return [UIImage imageWithData:[self.mediaData getData]];
+
+}
 
 + (void)load {
     [self registerSubclass];
@@ -39,4 +46,5 @@
 + (NSString *)parseClassName {
     return @"Post";
 }
+
 @end

@@ -24,20 +24,48 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getPosts];
+}
+
+- (void)gotPostData:(NSArray *)data {
+    self.postsArray = data;
+    [self.homeTableView reloadData];
+}
+
+- (void)getPosts {
+    PFQuery *query = [Post query];
+    NSMutableArray *posts = [NSMutableArray new];
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"objects.count == %li", objects.count);
+        NSLog(@"error == %@", error);
+        if (!error) {
+            for (Post *post in objects) {
+                [post populateImage];
+                [posts addObject:post];
+                NSLog(@"post.objectId == %@",post.objectId);
+            }
+
+            self.postsArray = [NSArray arrayWithArray:posts];
+            [self.homeTableView reloadData];
+        } else {
+            NSLog(@"%@", error);
+        }
+    }];
 }
 
 #pragma mark - TableView Delegates
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
-    //    return self.postsArray.count;
+    return self.postsArray.count;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+-(HomeTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
+    Post *post = self.postsArray[indexPath.row];
 
+    cell.homeCellImageView.image = [post convertToImage];
     cell.backgroundColor = [UIColor blackColor];
-    cell.homeCellImageView.image = [UIImage imageNamed:@"bluestar"];
 
     return  cell;
 }

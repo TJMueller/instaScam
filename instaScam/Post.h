@@ -10,7 +10,6 @@
 
 @interface Post : PFObject<PFSubclassing>
 
-
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) PFUser *user;
 @property (nonatomic, strong) PFFile *mediaData;
@@ -18,13 +17,10 @@
 @property (nonatomic, strong) NSArray *tags;
 @property (nonatomic, strong) NSArray *comments;
 
-
-
 + (instancetype)createPostWithPhoto:(UIImage *)photo;
-
 
 + (NSString *)parseClassName;
 
-
+- (UIImage *)convertToImage;
 
 @end
