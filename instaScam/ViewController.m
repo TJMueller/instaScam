@@ -36,6 +36,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
     PFUser *user = [PFUser currentUser];
     if (user.username != nil) {
         NSLog(@"I remember");
