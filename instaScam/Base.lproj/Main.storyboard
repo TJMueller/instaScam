@@ -1138,7 +1138,7 @@
                                     <action selector="onTakePictureButtonTapped:" destination="ghQ-4v-auD" eventType="touchUpInside" id="bU3-bg-Lja"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fIm-h4-wWH">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fIm-h4-wWH">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="0ng-ua-42M"/>
@@ -1182,13 +1182,17 @@
                                     <action selector="onChoosePictureButtonTapped:" destination="ghQ-4v-auD" eventType="touchUpInside" id="NYh-ro-Dl9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Tz-km-Iqe">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Tz-km-Iqe">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="HVq-Ug-YYz"/>
-                                    <constraint firstAttribute="width" constant="86" id="I7F-gk-eNc"/>
+                                    <constraint firstAttribute="height" constant="30" id="HVq-Ug-YYz">
+                                        <variation key="widthClass=compact" constant="45"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="86" id="I7F-gk-eNc">
+                                        <variation key="widthClass=compact" constant="47"/>
+                                    </constraint>
                                 </constraints>
-                                <state key="normal" title="Post">
+                                <state key="normal" image="Home_InstaScam">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
@@ -1205,6 +1209,7 @@
                                 </variation>
                                 <connections>
                                     <action selector="onPostButtonPrest:" destination="ghQ-4v-auD" eventType="touchUpInside" id="oLI-bP-XJz"/>
+                                    <segue destination="eVI-nr-Fp0" kind="show" id="SFA-go-7hP"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1212,7 +1217,9 @@
                         <constraints>
                             <constraint firstItem="L3T-K8-WJd" firstAttribute="top" secondItem="fIm-h4-wWH" secondAttribute="bottom" constant="26" id="C5I-gt-OhT"/>
                             <constraint firstItem="s0m-Au-jZr" firstAttribute="leading" secondItem="loN-ow-1po" secondAttribute="leadingMargin" constant="34" id="LnK-9o-gUI"/>
-                            <constraint firstItem="6Tz-km-Iqe" firstAttribute="top" secondItem="L3T-K8-WJd" secondAttribute="bottom" constant="79" id="P94-xh-eZe"/>
+                            <constraint firstItem="6Tz-km-Iqe" firstAttribute="top" secondItem="L3T-K8-WJd" secondAttribute="bottom" constant="79" id="P94-xh-eZe">
+                                <variation key="widthClass=compact" constant="73"/>
+                            </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="fIm-h4-wWH" secondAttribute="trailing" constant="34" id="Zmi-gp-7Pc"/>
                             <constraint firstAttribute="centerX" secondItem="6Tz-km-Iqe" secondAttribute="centerX" id="ci9-jO-f4x"/>
                             <constraint firstItem="fIm-h4-wWH" firstAttribute="top" secondItem="POn-IG-JjX" secondAttribute="bottom" constant="8" id="e2c-Ch-Tx0"/>
@@ -1232,18 +1239,18 @@
                                 <exclude reference="6Tz-km-Iqe"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Zmi-gp-7Pc"/>
-                                <exclude reference="e2c-Ch-Tx0"/>
-                                <exclude reference="yXj-OP-lxN"/>
                                 <exclude reference="C5I-gt-OhT"/>
                                 <exclude reference="fFI-7x-SuM"/>
                                 <exclude reference="uPv-gP-jFa"/>
-                                <exclude reference="LnK-9o-gUI"/>
-                                <exclude reference="e7k-sg-ZdU"/>
-                                <exclude reference="qec-uu-S5M"/>
-                                <exclude reference="xaL-EI-jxc"/>
                                 <exclude reference="P94-xh-eZe"/>
                                 <exclude reference="ci9-jO-f4x"/>
+                                <exclude reference="qec-uu-S5M"/>
+                                <exclude reference="xaL-EI-jxc"/>
+                                <exclude reference="LnK-9o-gUI"/>
+                                <exclude reference="e7k-sg-ZdU"/>
+                                <exclude reference="Zmi-gp-7Pc"/>
+                                <exclude reference="e2c-Ch-Tx0"/>
+                                <exclude reference="yXj-OP-lxN"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -1255,18 +1262,18 @@
                                 <include reference="6Tz-km-Iqe"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Zmi-gp-7Pc"/>
-                                <include reference="e2c-Ch-Tx0"/>
-                                <include reference="yXj-OP-lxN"/>
                                 <include reference="C5I-gt-OhT"/>
                                 <include reference="fFI-7x-SuM"/>
                                 <include reference="uPv-gP-jFa"/>
-                                <include reference="LnK-9o-gUI"/>
-                                <include reference="e7k-sg-ZdU"/>
-                                <include reference="qec-uu-S5M"/>
-                                <include reference="xaL-EI-jxc"/>
                                 <include reference="P94-xh-eZe"/>
                                 <include reference="ci9-jO-f4x"/>
+                                <include reference="qec-uu-S5M"/>
+                                <include reference="xaL-EI-jxc"/>
+                                <include reference="LnK-9o-gUI"/>
+                                <include reference="e7k-sg-ZdU"/>
+                                <include reference="Zmi-gp-7Pc"/>
+                                <include reference="e2c-Ch-Tx0"/>
+                                <include reference="yXj-OP-lxN"/>
                             </mask>
                         </variation>
                     </view>
@@ -1281,4 +1288,10 @@
             <point key="canvasLocation" x="333" y="1247"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Home_InstaScam" width="142" height="141"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="SFA-go-7hP"/>
+    </inferredMetricsTieBreakers>
 </document>

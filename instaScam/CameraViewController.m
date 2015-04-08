@@ -7,6 +7,8 @@
 //
 
 #import "CameraViewController.h"
+#import "HomeViewController.h"
+
 #import "Post.h"
 
 @interface CameraViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -28,15 +30,7 @@
     }
 }
 
-/*
- #pragma mark - Navigation
-
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+#pragma mark ----------------- Actions -------------------------------
 
 - (IBAction)onTakePictureButtonTapped:(id)sender {
     UIImagePickerController *picker = [UIImagePickerController new];
@@ -64,6 +58,8 @@
     [self presentViewController:picker animated:YES completion:nil];
 }
 
+#pragma mark -------- UIImagePickerController Methods -----------
+
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
@@ -83,7 +79,12 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
+ #pragma mark ---------- Navigation -------------
 
+// - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//      UITabBarController *vc = segue.destinationViewController
+//     vc = segue.destinationViewController;
+//}
 
 
 
