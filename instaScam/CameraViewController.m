@@ -7,6 +7,9 @@
 //
 
 #import "CameraViewController.h"
+#import "HomeViewController.h"
+
+#import "Post.h"
 
 @interface CameraViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -19,7 +22,7 @@
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Oops!"
-                                                       message:@"Sorry, seems like your device has no camera"
+                                                       message:@"Sorry, seems like your device has no camera."
                                                       delegate:nil
                                              cancelButtonTitle:@"OK"
                                              otherButtonTitles:nil];
@@ -27,15 +30,7 @@
     }
 }
 
-/*
- #pragma mark - Navigation
-
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+#pragma mark ----------------- Actions -------------------------------
 
 - (IBAction)onTakePictureButtonTapped:(id)sender {
     UIImagePickerController *picker = [UIImagePickerController new];
@@ -47,6 +42,13 @@
     [self presentViewController:picker animated:YES completion:nil];
 }
 
+- (IBAction)onPostButtonPrest:(id)sender {
+    Post *post = [Post createPostWithPhoto:self.postingImageView.image];
+    post.comments = [[NSArray alloc]initWithObjects:self.commentTextField.text, nil ];
+    [post save];
+}
+
+
 - (IBAction)onChoosePictureButtonTapped:(id)sender {
     UIImagePickerController *picker = [UIImagePickerController new];
     picker.delegate = self;
@@ -55,6 +57,8 @@
 
     [self presentViewController:picker animated:YES completion:nil];
 }
+
+#pragma mark -------- UIImagePickerController Methods -----------
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -75,7 +79,12 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
+ #pragma mark ---------- Navigation -------------
 
+// - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//      UITabBarController *vc = segue.destinationViewController
+//     vc = segue.destinationViewController;
+//}
 
 
 
