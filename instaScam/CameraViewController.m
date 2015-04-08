@@ -7,6 +7,7 @@
 //
 
 #import "CameraViewController.h"
+#import "Post.h"
 
 @interface CameraViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -19,7 +20,7 @@
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Oops!"
-                                                       message:@"Sorry, seems like your device has no camera"
+                                                       message:@"Sorry, seems like your device has no camera."
                                                       delegate:nil
                                              cancelButtonTitle:@"OK"
                                              otherButtonTitles:nil];
@@ -46,6 +47,13 @@
 
     [self presentViewController:picker animated:YES completion:nil];
 }
+
+- (IBAction)onPostButtonPrest:(id)sender {
+    Post *post = [Post createPostWithPhoto:self.postingImageView.image];
+    post.comments = [[NSArray alloc]initWithObjects:self.commentTextField.text, nil ];
+    [post save];
+}
+
 
 - (IBAction)onChoosePictureButtonTapped:(id)sender {
     UIImagePickerController *picker = [UIImagePickerController new];
