@@ -36,6 +36,9 @@
 		23AEDA5F1AD471F100DB8A42 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AEDA5E1AD471F100DB8A42 /* Post.m */; };
 		5E22278B1AD4883900BE2AF6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2374D30B1AD3317A00F7B3DB /* AppDelegate.m */; };
 		5E22278C1AD4884900BE2AF6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2374D30E1AD3317A00F7B3DB /* ViewController.m */; };
+		D693226A1AD57F2C00FFB7C1 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D69322691AD57F2C00FFB7C1 /* EditProfileViewController.m */; };
+		D693226D1AD57F4500FFB7C1 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D693226C1AD57F4500FFB7C1 /* CameraViewController.m */; };
+		D69322701AD57F5200FFB7C1 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D693226F1AD57F5200FFB7C1 /* ProfileViewController.m */; };
 		D6C833D61AD4446B006BB213 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C833D51AD4446B006BB213 /* HomeViewController.m */; };
 		D6C833E51AD46C05006BB213 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C833E41AD46C05006BB213 /* HomeTableViewCell.m */; };
 		D6C833E81AD46F92006BB213 /* HomeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C833E71AD46F92006BB213 /* HomeDetailViewController.m */; };
@@ -90,6 +93,12 @@
 		23AEDA5B1AD471E400DB8A42 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		23AEDA5D1AD471F100DB8A42 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		23AEDA5E1AD471F100DB8A42 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
+		D69322681AD57F2C00FFB7C1 /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
+		D69322691AD57F2C00FFB7C1 /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
+		D693226B1AD57F4500FFB7C1 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		D693226C1AD57F4500FFB7C1 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		D693226E1AD57F5200FFB7C1 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		D693226F1AD57F5200FFB7C1 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		D6C833D41AD4446B006BB213 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		D6C833D51AD4446B006BB213 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		D6C833E31AD46C05006BB213 /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
@@ -165,6 +174,12 @@
 				D6C833D51AD4446B006BB213 /* HomeViewController.m */,
 				D6C833E61AD46F92006BB213 /* HomeDetailViewController.h */,
 				D6C833E71AD46F92006BB213 /* HomeDetailViewController.m */,
+				D693226B1AD57F4500FFB7C1 /* CameraViewController.h */,
+				D693226C1AD57F4500FFB7C1 /* CameraViewController.m */,
+				D693226E1AD57F5200FFB7C1 /* ProfileViewController.h */,
+				D693226F1AD57F5200FFB7C1 /* ProfileViewController.m */,
+				D69322681AD57F2C00FFB7C1 /* EditProfileViewController.h */,
+				D69322691AD57F2C00FFB7C1 /* EditProfileViewController.m */,
 				D6C833E31AD46C05006BB213 /* HomeTableViewCell.h */,
 				D6C833E41AD46C05006BB213 /* HomeTableViewCell.m */,
 				23AEDA571AD471D900DB8A42 /* User.h */,
@@ -343,12 +358,15 @@
 			files = (
 				5E22278C1AD4884900BE2AF6 /* ViewController.m in Sources */,
 				5E22278B1AD4883900BE2AF6 /* AppDelegate.m in Sources */,
+				D693226A1AD57F2C00FFB7C1 /* EditProfileViewController.m in Sources */,
 				D6C833E81AD46F92006BB213 /* HomeDetailViewController.m in Sources */,
 				D6C833E51AD46C05006BB213 /* HomeTableViewCell.m in Sources */,
 				23AEDA591AD471D900DB8A42 /* User.m in Sources */,
+				D693226D1AD57F4500FFB7C1 /* CameraViewController.m in Sources */,
 				23AEDA5F1AD471F100DB8A42 /* Post.m in Sources */,
 				23AEDA5C1AD471E400DB8A42 /* Comment.m in Sources */,
 				2374D3091AD3317A00F7B3DB /* main.m in Sources */,
+				D69322701AD57F5200FFB7C1 /* ProfileViewController.m in Sources */,
 				D6C833D61AD4446B006BB213 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

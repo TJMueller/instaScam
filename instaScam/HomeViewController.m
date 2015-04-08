@@ -27,13 +27,15 @@
 #pragma mark - TableView Delegates
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.postsArray.count;
+    return 1;
+    //    return self.postsArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
 
     cell.backgroundColor = [UIColor blackColor];
+    cell.homeCellImageView.image = [UIImage imageNamed:@"bluestar"];
 
     return  cell;
 }

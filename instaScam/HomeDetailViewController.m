@@ -9,6 +9,7 @@
 #import "HomeDetailViewController.h"
 
 @interface HomeDetailViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
