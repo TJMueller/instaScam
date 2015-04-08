@@ -6,9 +6,12 @@
 //  Copyright (c) 2015 Timothy Mueller. All rights reserved.
 //
 
+#import <Parse/Parse.h>
+
 #import "HomeViewController.h"
 #import "HomeDetailViewController.h"
 #import "HomeTableViewCell.h"
+#import "Post.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -21,7 +24,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
 }
 
 #pragma mark - TableView Delegates
@@ -38,6 +40,11 @@
     cell.homeCellImageView.image = [UIImage imageNamed:@"bluestar"];
 
     return  cell;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    NSIndexPath *indexPath = [self.homeTableView indexPathForSelectedRow];
+//    Post *post = self.postsArray[indexPath.row];
 }
 
 -(IBAction)unwindFromSegue:(UIStoryboardSegue *)segue {

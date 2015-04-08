@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Post.h"
 
 @interface HomeDetailViewController : UIViewController
+
+@property Post *post;
+@property NSArray *likedArray;
 
 @end
