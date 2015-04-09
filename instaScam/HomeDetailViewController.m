@@ -24,27 +24,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = self.post.objectId;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    if (self.likesOrComments) {
-        return self.likesArray.count;
-    } else {
-        return self.commentsArray.count;
-    }
+//    if (self.likesOrComments) {
+//        return self.likesArray.count;
+//    } else {
+//        return self.commentsArray.count;
+//    }
+    return 5;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
-
-//    Person *person = self.likesArray[indexPath.row];
-
-//    if (self.likesArray) {
-//        cell.textLabel.text = person.userName;
-//    } else {
-//        cell.textLabel.text =
-//    }
 
     return cell;
 }

@@ -12,11 +12,13 @@
 #import "HomeDetailViewController.h"
 #import "HomeTableViewCell.h"
 #import "Post.h"
+#import "Person.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property NSArray *postsArray;
 @property (weak, nonatomic) IBOutlet UITableView *homeTableView;
+@property Person *person;
 
 @end
 
@@ -24,6 +26,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.person = [Person new];
+    self.person.userName = @"blw305";
     [self getPosts];
 }
 
@@ -55,7 +59,7 @@
 
 #pragma mark - TableView Delegates
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.postsArray.count;
 }
 
@@ -63,11 +67,12 @@
     HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
     Post *post = self.postsArray[indexPath.row];
 
+    cell.userLabel.text = self.person.userName;
     cell.homeCellImageView.image = [post convertToImage];
-    cell.backgroundColor = [UIColor blackColor];
 
-    return  cell;
+    return cell;
 }
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSIndexPath *indexPath = [self.homeTableView indexPathForSelectedRow];
@@ -78,6 +83,40 @@
 }
 
 -(IBAction)unwindFromSegue:(UIStoryboardSegue *)segue {
+    
+}
+
+- (void)homeTableViewCell:(id)cell didTapCommentButton:(UIButton *)button {
+    UIAlertController *commentController = [UIAlertController alertControllerWithTitle:@"Add comment" message:nil preferredStyle:UIAlertControllerStyleAlert];
+
+    [commentController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        nil;
+    }];
+
+    UIAlertAction *commentAction = [UIAlertAction actionWithTitle:@"Okay"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction *action) {
+
+                                                              //                                   UITextField *textField = commentController.textFields.firstObject;
+                                                              //                                   Comment *comment = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Comment class]) inManagedObjectContext:self.moc];
+                                                              //                                   comment.comment = textField.text;
+                                                          }];
+
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction *action) {
+                                                             nil;
+                                                         }];
+
+    [commentController addAction:cancelAction];
+    [commentController addAction:commentAction];
+
+    [self presentViewController:commentController animated:YES completion:^{
+        nil;
+    }];
+}
+
+- (void)homeTableViewCell:(id)cell didTapLikeButton:(UIButton *)button {
     
 }
 
