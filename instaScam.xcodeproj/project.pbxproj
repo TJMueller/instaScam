@@ -42,6 +42,7 @@
 		D6C833D61AD4446B006BB213 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C833D51AD4446B006BB213 /* HomeViewController.m */; };
 		D6C833E51AD46C05006BB213 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C833E41AD46C05006BB213 /* HomeTableViewCell.m */; };
 		D6C833E81AD46F92006BB213 /* HomeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C833E71AD46F92006BB213 /* HomeDetailViewController.m */; };
+		D6EA8D8D1AD6D63700C50EE6 /* ProfileCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EA8D8C1AD6D63700C50EE6 /* ProfileCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,8 @@
 		D6C833E41AD46C05006BB213 /* HomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
 		D6C833E61AD46F92006BB213 /* HomeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDetailViewController.h; sourceTree = "<group>"; };
 		D6C833E71AD46F92006BB213 /* HomeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDetailViewController.m; sourceTree = "<group>"; };
+		D6EA8D8B1AD6D63700C50EE6 /* ProfileCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCollectionViewCell.h; sourceTree = "<group>"; };
+		D6EA8D8C1AD6D63700C50EE6 /* ProfileCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,16 +175,18 @@
 				2374D30E1AD3317A00F7B3DB /* ViewController.m */,
 				D6C833D41AD4446B006BB213 /* HomeViewController.h */,
 				D6C833D51AD4446B006BB213 /* HomeViewController.m */,
+				D6C833E31AD46C05006BB213 /* HomeTableViewCell.h */,
+				D6C833E41AD46C05006BB213 /* HomeTableViewCell.m */,
 				D6C833E61AD46F92006BB213 /* HomeDetailViewController.h */,
 				D6C833E71AD46F92006BB213 /* HomeDetailViewController.m */,
 				D693226B1AD57F4500FFB7C1 /* CameraViewController.h */,
 				D693226C1AD57F4500FFB7C1 /* CameraViewController.m */,
 				D693226E1AD57F5200FFB7C1 /* ProfileViewController.h */,
 				D693226F1AD57F5200FFB7C1 /* ProfileViewController.m */,
+				D6EA8D8B1AD6D63700C50EE6 /* ProfileCollectionViewCell.h */,
+				D6EA8D8C1AD6D63700C50EE6 /* ProfileCollectionViewCell.m */,
 				D69322681AD57F2C00FFB7C1 /* EditProfileViewController.h */,
 				D69322691AD57F2C00FFB7C1 /* EditProfileViewController.m */,
-				D6C833E31AD46C05006BB213 /* HomeTableViewCell.h */,
-				D6C833E41AD46C05006BB213 /* HomeTableViewCell.m */,
 				231C5E8C1AD590C300E6AB2C /* Person.h */,
 				231C5E8D1AD590C300E6AB2C /* Person.m */,
 				231C5E8F1AD590CF00E6AB2C /* Post.h */,
@@ -358,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6EA8D8D1AD6D63700C50EE6 /* ProfileCollectionViewCell.m in Sources */,
 				5E22278C1AD4884900BE2AF6 /* ViewController.m in Sources */,
 				5E22278B1AD4883900BE2AF6 /* AppDelegate.m in Sources */,
 				231C5E8E1AD590C300E6AB2C /* Person.m in Sources */,

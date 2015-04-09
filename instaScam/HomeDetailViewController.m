@@ -7,6 +7,7 @@
 //
 
 #import "HomeDetailViewController.h"
+#import "Person.h"
 
 @interface HomeDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -37,12 +38,14 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
 
+//    Person *person = self.likesArray[indexPath.row];
+
 //    if (self.likesArray) {
-//        cell.textLabel.text =
+//        cell.textLabel.text = person.userName;
 //    } else {
 //        cell.textLabel.text =
 //    }
-    
+
     return cell;
 }
 
