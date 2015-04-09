@@ -63,6 +63,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (void)getPosts
 {
     PFUser *user = [PFUser currentUser];
@@ -83,6 +84,12 @@
              NSLog(@"%@", error.description);
          }
      }];
+
+
+}
+- (IBAction)logOutButtonPressed:(id)sender {
+    [PFUser logOut];
+    //[self performSegueWithIdentifier:@"login" sender:self];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
