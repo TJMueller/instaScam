@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *followersLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followingLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) IBOutlet UITextView *bioLabel;
 
 @end
 
@@ -33,6 +34,8 @@
     NSLog(@"%@", user.username);
     [query whereKey:@"userName" equalTo:user.username];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (objects.count == 0) {
+        } else {
         Person *person = objects[0];
         self.followersLabel.text = [NSString stringWithFormat:@"Followers: %lu", (unsigned long)person.followers.count];
         self.followingLabel.text = [NSString stringWithFormat:@"Following: %lu", (unsigned long)person.following.count];
@@ -44,6 +47,7 @@
                 NSLog(@"%@", error);
             }
         }];
+        }
     }];
 
     self.fullNameLabel.text = user[@"fullName"];
