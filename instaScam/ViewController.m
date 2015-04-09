@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *signUpButton;
 @property BOOL signUp;
 @property BOOL logIn;
+@property BOOL shouldSignUp;
 
 @end
 
@@ -36,6 +37,7 @@
     self.usernameTextField.delegate = self;
     self.passwordTextField.delegate = self;
     self.passwordConfirmationTextField.delegate = self;
+    self.shouldSignUp = NO;
 
 }
 
@@ -52,6 +54,7 @@
     PFUser *user = [PFUser currentUser];
     if (user.username != nil) {
         NSLog(@"I remember");
+        self.shouldSignUp = YES;
 
 
 //currentUser is our object
@@ -101,6 +104,11 @@
         [self performSegueWithIdentifier:@"login" sender:self];
     }
 }
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    [self checkFieldsComplete];
+    return self.shouldSignUp;
+
+}
 
 - (IBAction)onLogInButtonPressed:(id)sender {
     [self.usernameTextField resignFirstResponder];
@@ -111,7 +119,8 @@
                 NSLog(@"Login user!");
                 self.usernameTextField.text = nil;
                 self.passwordTextField.text = nil;
-                //[self performSegueWithIdentifier:@"login" sender:self];
+                self.shouldSignUp = YES;
+                [self performSegueWithIdentifier:@"login" sender:self];
             }
             if (error) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ooops!" message:@"Sorry we had a problem logging you in" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -128,6 +137,7 @@
 }
 
 - (IBAction)onSignUpButtonPressed:(id)sender {
+    
     [self.usernameTextField resignFirstResponder];
     [self.emailTextField resignFirstResponder];
     [self.passwordConfirmationTextField resignFirstResponder];
@@ -180,6 +190,7 @@
             person[@"userName"] = self.usernameTextField.text;
             person[@"userID"] = newUser.objectId;
             [person save];
+            self.shouldSignUp = YES;
             [self performSegueWithIdentifier:@"login" sender:self];
         }
         else {

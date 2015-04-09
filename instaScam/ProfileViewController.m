@@ -62,7 +62,7 @@
 }
 - (IBAction)logOutButtonPressed:(id)sender {
     [PFUser logOut];
-    [self performSegueWithIdentifier:@"login" sender:self];
+    //[self performSegueWithIdentifier:@"login" sender:self];
 }
 
 - (ProfileCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
