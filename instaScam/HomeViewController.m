@@ -62,8 +62,14 @@
     cell.delegate = self;
     Post *post = self.postsArray[indexPath.row];
 
-    cell.userLabel.text = self.person.userName;
-    cell.homeCellImageView.image = [post convertToImage];
+//    Person *person = [Person new];
+
+//    if (person.userID == post.personID) {
+
+//        cell.userLabel.text = person.userName;
+        cell.homeCellImageView.image = [post convertToImage];
+
+//    }
 
     return cell;
 }

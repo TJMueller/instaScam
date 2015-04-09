@@ -31,7 +31,7 @@ UIImage *image;
         PFUser *user = [PFUser currentUser];
         post.personID = user.objectId;
 
-        //[post save];
+//        [post save];
     }
     return post;
 }
