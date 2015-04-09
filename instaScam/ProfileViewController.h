@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProfileCollectionViewCell.h"
+#import "Post.h"
 
 @interface ProfileViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end

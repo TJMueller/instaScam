@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *postsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followersLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followingLabel;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UITextView *bioLabel;
 
 @property NSMutableArray *postsArray;
@@ -26,6 +25,8 @@
 @end
 
 @implementation ProfileViewController
+
+@synthesize collectionView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -80,9 +81,8 @@
      }];
 }
 
-- (IBAction)logOutButtonPressed:(id)sender {
-    [PFUser logOut];
-    //[self performSegueWithIdentifier:@"login" sender:self];
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [self.postsArray count];
 }
 
 - (ProfileCollectionViewCell *)collectionView:(UICollectionView *)collectionViewType cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -95,8 +95,10 @@
     return cell;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.postsArray.count;
+- (IBAction)logOutButtonPressed:(id)sender {
+    [PFUser logOut];
+    [self performSegueWithIdentifier:@"login" sender:self];
 }
+
 
 @end
