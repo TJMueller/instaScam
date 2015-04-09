@@ -87,10 +87,10 @@
 
 
 }
-- (IBAction)logOutButtonPressed:(id)sender {
-    [PFUser logOut];
-    //[self performSegueWithIdentifier:@"login" sender:self];
-}
+//- (IBAction)logOutButtonPressed:(id)sender {
+//    [PFUser logOut];
+//    //[self performSegueWithIdentifier:@"login" sender:self];
+//}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return [postsArray count];
