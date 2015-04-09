@@ -326,7 +326,7 @@
                                                         </mask>
                                                     </variation>
                                                     <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="33" width="320" height="400"/>
+                                                        <rect key="frame" x="0.0" y="31" width="320" height="400"/>
                                                         <mask key="constraints">
                                                             <include reference="q8r-XP-Vgq"/>
                                                         </mask>
