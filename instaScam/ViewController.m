@@ -10,7 +10,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController ()<UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *nameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *emailTextField;
 @property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
@@ -32,7 +32,19 @@
     self.emailTextField.alpha = 0;
     self.signUp = NO;
     self.logIn = YES;
+    self.usernameTextField.delegate = self;
+    self.passwordTextField.delegate = self;
+    self.passwordConfirmationTextField.delegate = self;
+    
 
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self.usernameTextField resignFirstResponder];
+    [self.emailTextField resignFirstResponder];
+    [self.passwordConfirmationTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+    return YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

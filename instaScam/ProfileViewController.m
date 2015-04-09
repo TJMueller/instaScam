@@ -54,7 +54,7 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)logOutButtonPressed:(id)sender {
-//    [PFUser logOut];
+    [PFUser logOut];
 }
 
 /*
