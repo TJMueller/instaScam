@@ -11,6 +11,10 @@
 @interface HomeDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property BOOL likesOrComments;
+@property NSArray *likesArray;
+@property NSArray *commentsArray;
+
 @end
 
 @implementation HomeDetailViewController
@@ -19,15 +23,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+
+    if (self.likesOrComments) {
+        return self.likesArray.count;
+    } else {
+        return self.commentsArray.count;
+    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
+
+//    if (self.likesArray) {
+//        cell.textLabel.text =
+//    } else {
+//        cell.textLabel.text =
+//    }
+    
     return cell;
 }
 

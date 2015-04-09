@@ -12,6 +12,5 @@
 @interface HomeDetailViewController : UIViewController
 
 @property Post *post;
-@property NSArray *likedArray;
 
 @end

@@ -305,9 +305,11 @@
 				TargetAttributes = {
 					2374D3021AD3317A00F7B3DB = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 5A27VZVWQE;
 					};
 					2374D31B1AD3317A00F7B3DB = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 5A27VZVWQE;
 						TestTargetID = 2374D3021AD3317A00F7B3DB;
 					};
 				};
@@ -519,6 +521,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -530,6 +534,7 @@
 				INFOPLIST_FILE = instaScamTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/instaScam.app/instaScam";
 			};
 			name = Debug;
@@ -538,6 +543,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -545,6 +552,7 @@
 				INFOPLIST_FILE = instaScamTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/instaScam.app/instaScam";
 			};
 			name = Release;

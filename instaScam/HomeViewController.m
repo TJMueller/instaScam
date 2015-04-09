@@ -41,7 +41,6 @@
         NSLog(@"error == %@", error);
         if (!error) {
             for (Post *post in objects) {
-                [post populateImage];
                 [posts addObject:post];
                 NSLog(@"post.objectId == %@",post.objectId);
             }
@@ -71,8 +70,11 @@
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    NSIndexPath *indexPath = [self.homeTableView indexPathForSelectedRow];
-//    Post *post = self.postsArray[indexPath.row];
+    NSIndexPath *indexPath = [self.homeTableView indexPathForSelectedRow];
+    Post *post = self.postsArray[indexPath.row];
+
+    HomeDetailViewController *homeDetailVC = segue.destinationViewController;
+    homeDetailVC.post = post;
 }
 
 -(IBAction)unwindFromSegue:(UIStoryboardSegue *)segue {
