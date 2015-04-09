@@ -13,8 +13,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property BOOL likesOrComments;
-@property NSArray *likesArray;
-@property NSArray *commentsArray;
 
 @end
 
@@ -25,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = self.post.objectId;
+    NSLog(@"%@", self.post.objectId);
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

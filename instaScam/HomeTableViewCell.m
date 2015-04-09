@@ -22,7 +22,7 @@
     [self.delegate homeTableViewCell:self didTapLikeButton:sender];
 }
 
-- (IBAction)commentButtonPressed:(UIButton *)sender {
+- (IBAction)commentButtonPressed:(id)sender {
     [self.delegate homeTableViewCell:self didTapCommentButton:sender];
 }
 

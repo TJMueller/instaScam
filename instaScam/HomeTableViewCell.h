@@ -22,8 +22,4 @@
 @property (weak, nonatomic) IBOutlet UIImageView *homeCellImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userLabel;
 
-//- (IBAction)likeButtonPressed:(UIButton *)sender;
-//
-//- (IBAction)commentButtonPressed:(UIButton *)sender;
-
 @end

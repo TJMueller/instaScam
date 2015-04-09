@@ -16,8 +16,9 @@
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
 
-@property NSArray *postsArray;
 @property (weak, nonatomic) IBOutlet UITableView *homeTableView;
+
+@property NSArray *postsArray;
 @property Person *person;
 
 @end
@@ -26,14 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.person = [Person new];
-    self.person.userName = @"blw305";
     [self getPosts];
-}
-
-- (void)gotPostData:(NSArray *)data {
-    self.postsArray = data;
-    [self.homeTableView reloadData];
 }
 
 - (void)getPosts {
@@ -65,6 +59,7 @@
 
 -(HomeTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
+    cell.delegate = self;
     Post *post = self.postsArray[indexPath.row];
 
     cell.userLabel.text = self.person.userName;
@@ -75,17 +70,26 @@
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
     NSIndexPath *indexPath = [self.homeTableView indexPathForSelectedRow];
     Post *post = self.postsArray[indexPath.row];
 
     HomeDetailViewController *homeDetailVC = segue.destinationViewController;
     homeDetailVC.post = post;
+
+    if ([segue.identifier  isEqual: @"LikesSegue"]) {
+//        homeDetailVC.likesArray = //array of users who have "liked the post"
+    } else {
+//        homeDetailVC.commentsArray = //array of comments on the post, and the users who wrote those comments
+    }
 }
 
 -(IBAction)unwindFromSegue:(UIStoryboardSegue *)segue {
     
 }
 
+
+//somehow need to integrate NSIndexPath to tell which post to add the comment to; same for the liking an image
 - (void)homeTableViewCell:(id)cell didTapCommentButton:(UIButton *)button {
     UIAlertController *commentController = [UIAlertController alertControllerWithTitle:@"Add comment" message:nil preferredStyle:UIAlertControllerStyleAlert];
 
@@ -97,7 +101,7 @@
                                                             style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction *action) {
 
-                                                              //                                   UITextField *textField = commentController.textFields.firstObject;
+                                                              UITextField *textField = commentController.textFields.firstObject;
                                                               //                                   Comment *comment = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Comment class]) inManagedObjectContext:self.moc];
                                                               //                                   comment.comment = textField.text;
                                                           }];

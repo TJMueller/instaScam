@@ -326,7 +326,7 @@
                                                         </mask>
                                                     </variation>
                                                     <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="0.0" y="31" width="320" height="400"/>
+                                                        <rect key="frame" x="0.0" y="33" width="320" height="400"/>
                                                         <mask key="constraints">
                                                             <include reference="q8r-XP-Vgq"/>
                                                         </mask>
@@ -428,7 +428,7 @@
                                                         </mask>
                                                     </variation>
                                                     <connections>
-                                                        <segue destination="kF3-hr-cBC" kind="show" id="5vj-W2-sAv"/>
+                                                        <segue destination="kF3-hr-cBC" kind="show" identifier="LikesSegue" id="5vj-W2-sAv"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -493,7 +493,7 @@
                                         <connections>
                                             <outlet property="homeCellImageView" destination="VKn-qG-Lsk" id="iNY-Ns-Ela"/>
                                             <outlet property="userLabel" destination="XTO-up-Qd9" id="KOV-Cw-agq"/>
-                                            <segue destination="kF3-hr-cBC" kind="showDetail" identifier="HomeDetailSegue" id="qYb-BB-Cef"/>
+                                            <segue destination="kF3-hr-cBC" kind="showDetail" identifier="CommentsSegue" id="qYb-BB-Cef"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -699,19 +699,19 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="132" height="130"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="95" height="95"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W10-rP-wzu">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="0.0" y="0.0" width="132" height="130"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                     </variation>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <size key="customSize" width="132" height="130"/>
+                                        <size key="customSize" width="95" height="95"/>
                                         <variation key="default">
                                             <mask key="subviews">
                                                 <exclude reference="W10-rP-wzu"/>
@@ -737,6 +737,10 @@
                                         <include reference="nbW-wq-Xhp"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="sLJ-Al-olj" id="GX1-Xb-X0j"/>
+                                    <outlet property="delegate" destination="sLJ-Al-olj" id="ECL-Vv-hHd"/>
+                                </connections>
                             </collectionView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3UE-PZ-YX7">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>

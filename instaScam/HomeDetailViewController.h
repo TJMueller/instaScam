@@ -12,5 +12,7 @@
 @interface HomeDetailViewController : UIViewController
 
 @property Post *post;
+@property NSArray *likesArray;
+@property NSArray *commentsArray;
 
 @end
