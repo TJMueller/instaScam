@@ -17,21 +17,21 @@
 @property (weak, nonatomic) IBOutlet UILabel *postsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followersLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followingLabel;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UITextView *bioLabel;
 
-@property NSArray *postsArray;
 
 @end
 
 @implementation ProfileViewController
 
+@synthesize collectionView;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.postsArray = [NSArray new];
+    postsArray = [NSMutableArray new];
 }
 
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewDidAppear:(BOOL)animated{
     PFUser *user = [PFUser currentUser];
     PFQuery *query = [Person query];
     NSLog(@"%@", user.username);
@@ -54,24 +54,56 @@
     }];
     self.bioLabel.text = user[@"bio"];
     self.fullNameLabel.text = user[@"fullName"];
-
+    [self getPosts];
+    [collectionView reloadData];
+    collectionView.delegate = self;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)getPosts
+{
+    PFUser *user = [PFUser currentUser];
+    PFQuery *personQuery = [Person query];
+    [personQuery whereKey:@"userName" equalTo:user.username];
+    PFQuery *query = [Post query];
+
+    [query whereKey:@"personID" equalTo:[PFUser currentUser].objectId.description];
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         if(!error) {
+             for (Post *post in objects) {
+                 [postsArray addObject:post];
+                 [collectionView reloadData];
+             }
+         } else {
+             NSLog(@"%@", error.description);
+         }
+     }];
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [postsArray count];
+}
+
+- (ProfileCollectionViewCell *)collectionView:(UICollectionView *)collectionViewType cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    ProfileCollectionViewCell *cell = [collectionViewType dequeueReusableCellWithReuseIdentifier:@"CellID" forIndexPath:indexPath];
+
+    Post *post = postsArray[indexPath.row];
+
+    cell.imageView.image = [post convertToImage];
+
+    return cell;
+}
+
 - (IBAction)logOutButtonPressed:(id)sender {
     [PFUser logOut];
     [self performSegueWithIdentifier:@"login" sender:self];
 }
 
-- (ProfileCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    ProfileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellID" forIndexPath:indexPath];
-    return cell;
-}
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.postsArray.count;
-}
 
 @end
