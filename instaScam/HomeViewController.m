@@ -35,9 +35,12 @@
     NSMutableArray *posts = [NSMutableArray new];
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"objects.count == %li", objects.count);
+        NSLog(@"error == %@", error);
         if (!error) {
             for (Post *post in objects) {
                 [posts addObject:post];
+                NSLog(@"post.objectId == %@",post.objectId);
             }
 
             self.postsArray = [NSArray arrayWithArray:posts];
@@ -56,7 +59,6 @@
 
 -(HomeTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
-    
     cell.delegate = self;
     Post *post = self.postsArray[indexPath.row];
 
