@@ -35,12 +35,9 @@
     NSMutableArray *posts = [NSMutableArray new];
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"objects.count == %li", objects.count);
-        NSLog(@"error == %@", error);
         if (!error) {
             for (Post *post in objects) {
                 [posts addObject:post];
-                NSLog(@"post.objectId == %@",post.objectId);
             }
 
             self.postsArray = [NSArray arrayWithArray:posts];
@@ -59,17 +56,11 @@
 
 -(HomeTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
+    
     cell.delegate = self;
     Post *post = self.postsArray[indexPath.row];
 
-//    Person *person = [Person new];
-
-//    if (person.userID == post.personID) {
-
-//        cell.userLabel.text = person.userName;
-        cell.homeCellImageView.image = [post convertToImage];
-
-//    }
+    cell.homeCellImageView.image = [post convertToImage];
 
     return cell;
 }
