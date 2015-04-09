@@ -86,7 +86,7 @@
         
         //[PFUser logOut];
 
-        //[self performSegueWithIdentifier:@"login" sender:self];
+        [self performSegueWithIdentifier:@"login" sender:self];
     }
 }
 

@@ -7,8 +7,11 @@
 //
 
 #import "EditProfileViewController.h"
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <Parse/Parse.h>
+#import "Person.h"
 
-@interface EditProfileViewController ()
+@interface EditProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
@@ -22,8 +25,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
+    PFUser *user = [PFUser currentUser];
+    self.nameTextField.text = [user objectForKey:@"fullName"];
+    self.emailTextField.text = [user objectForKey:@"email"];
+    self.bioTextField.text = [user objectForKey:@"bio"];
+    self.userNameTextField.text = user.username;}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -31,10 +37,45 @@
 }
 
 - (IBAction)saveEditsPressed:(UIButton *)sender {
+    PFUser *user = [PFUser currentUser];
+    user [@"fullName"] = self.nameTextField.text;
+    user.email = self.emailTextField.text;
+    user[@"bio"] = self.bioTextField.text;
+    user.username = self.userNameTextField.text;
+    [user save];
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
 }
+
+-(IBAction)onEditPhotoPressed:(id)sender{
+    UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+
+    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+
+        UIImage *editedImage = [info objectForKey:UIImagePickerControllerEditedImage];
+        UIImageWriteToSavedPhotosAlbum(editedImage, nil, nil, nil);
+        //self.postingImageView.image = editedImage;
+    }
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 /*
 #pragma mark - Navigation
