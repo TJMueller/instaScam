@@ -315,6 +315,9 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VKn-qG-Lsk">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="33" width="320" height="400"/>
+                                                    </variation>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTO-up-Qd9">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -375,7 +378,8 @@
                                                             <exclude reference="nDJ-jJ-VJH"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="244" y="438" width="68" height="30"/>
                                                         <mask key="constraints">
                                                             <include reference="SGv-gM-JDW"/>
                                                             <include reference="nDJ-jJ-VJH"/>
@@ -408,14 +412,14 @@
                                                 <mask key="constraints">
                                                     <exclude reference="N5G-yx-lx7"/>
                                                     <exclude reference="iK6-Ll-cmY"/>
-                                                    <exclude reference="HA7-CD-FBu"/>
-                                                    <exclude reference="OTv-gn-6dO"/>
-                                                    <exclude reference="vtH-Nd-y7f"/>
-                                                    <exclude reference="Zec-V5-m0y"/>
-                                                    <exclude reference="n0y-A4-TwB"/>
                                                     <exclude reference="LTR-Rx-UOM"/>
                                                     <exclude reference="WJk-rc-mD5"/>
                                                     <exclude reference="Zgo-sW-GOI"/>
+                                                    <exclude reference="Zec-V5-m0y"/>
+                                                    <exclude reference="n0y-A4-TwB"/>
+                                                    <exclude reference="HA7-CD-FBu"/>
+                                                    <exclude reference="OTv-gn-6dO"/>
+                                                    <exclude reference="vtH-Nd-y7f"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -428,14 +432,14 @@
                                                 <mask key="constraints">
                                                     <include reference="N5G-yx-lx7"/>
                                                     <include reference="iK6-Ll-cmY"/>
-                                                    <include reference="HA7-CD-FBu"/>
-                                                    <include reference="OTv-gn-6dO"/>
-                                                    <include reference="vtH-Nd-y7f"/>
-                                                    <include reference="Zec-V5-m0y"/>
-                                                    <include reference="n0y-A4-TwB"/>
                                                     <include reference="LTR-Rx-UOM"/>
                                                     <include reference="WJk-rc-mD5"/>
                                                     <include reference="Zgo-sW-GOI"/>
+                                                    <include reference="Zec-V5-m0y"/>
+                                                    <include reference="n0y-A4-TwB"/>
+                                                    <include reference="HA7-CD-FBu"/>
+                                                    <include reference="OTv-gn-6dO"/>
+                                                    <include reference="vtH-Nd-y7f"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -857,6 +861,7 @@
                                 </variation>
                                 <connections>
                                     <action selector="logOutButtonPressed:" destination="sLJ-Al-olj" eventType="touchUpInside" id="kOy-uf-F0U"/>
+                                    <segue destination="0tg-Dl-lib" kind="unwind" unwindAction="unwindFromLogOut:" id="duh-b3-n0p"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -969,6 +974,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XvH-bL-ZPq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="0tg-Dl-lib" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1090.5" y="1247"/>
         </scene>
