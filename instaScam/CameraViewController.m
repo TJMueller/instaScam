@@ -44,7 +44,8 @@
 
 - (IBAction)onPostButtonPrest:(id)sender {
     Post *post = [Post createPostWithPhoto:self.postingImageView.image];
-    post.comments = [[NSArray alloc]initWithObjects:self.commentTextField.text, nil ];
+    //post.comments = [[NSArray alloc]initWithObjects:self.commentTextField.text, nil ];
+    post.personID = [PFUser currentUser].objectId;
     [post save];
 }
 

@@ -17,6 +17,7 @@
 @dynamic likes;
 @dynamic tags;
 @dynamic comments;
+@dynamic personID;
 
 UIImage *image;
 
@@ -27,7 +28,9 @@ UIImage *image;
     {
         NSData *photoData = UIImageJPEGRepresentation(photo, 0.8f);
         post.mediaData = [PFFile fileWithData:photoData];
-        post.user = [PFUser currentUser];
+        PFUser *user = [PFUser currentUser];
+        post.personID = user.objectId;
+
         //[post save];
     }
     return post;

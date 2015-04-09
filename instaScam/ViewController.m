@@ -9,6 +9,7 @@
 
 
 #import "ViewController.h"
+#import "Person.h"
 
 @interface ViewController ()<UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *nameTextField;
@@ -169,19 +170,20 @@
     newUser.username = self.usernameTextField.text;
     newUser.email = self.emailTextField.text;
     newUser.password = self.passwordTextField.text;
-    PFObject * person = [PFObject objectWithClassName:@"Person"];
-    person[@"email"] = self.emailTextField.text;
-    person[@"userName"] = self.usernameTextField.text;
-    [person saveInBackground];
-    newUser[@"person"] = person;
 
 
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             NSLog(@"Registration success!");
+            PFObject * person = [PFObject objectWithClassName:@"Person"];
+            person[@"email"] = self.emailTextField.text;
+            person[@"userName"] = self.usernameTextField.text;
+            person[@"userID"] = newUser.objectId;
+            [person save];
             [self performSegueWithIdentifier:@"login" sender:self];
         }
         else {
+            NSLog(@"%@", error.description);
             NSLog(@"There was an error in registration");
         }
     }];

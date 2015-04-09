@@ -7,6 +7,7 @@
 //
 
 #import <Parse/Parse.h>
+#import "Person.h"
 
 @interface Post : PFObject<PFSubclassing>
 
@@ -16,6 +17,8 @@
 @property (nonatomic, strong) NSArray *likes;
 @property (nonatomic, strong) NSArray *tags;
 @property (nonatomic, strong) NSArray *comments;
+@property (nonatomic, strong) NSString *personID;
+
 
 + (instancetype)createPostWithPhoto:(UIImage *)photo;
 

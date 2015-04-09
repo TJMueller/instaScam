@@ -13,7 +13,7 @@
 @dynamic userName;
 @dynamic bio;
 @dynamic posts;
-@dynamic user;
+@dynamic userID;
 @dynamic fullName;
 @dynamic email;
 @dynamic followers;
