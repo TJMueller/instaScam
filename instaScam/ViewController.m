@@ -193,6 +193,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+//log out
+
 //-(IBAction)unwindFromLogOut:(UIStoryboardSegue *)segue {
 //
 //}
