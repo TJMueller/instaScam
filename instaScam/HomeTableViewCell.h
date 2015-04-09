@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeTableViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *homeCellImageView;
+
+- (IBAction)likeButtonPressed:(UIButton *)sender;
+
+- (IBAction)commentButtonPressed:(UIButton *)sender;
 
 @end

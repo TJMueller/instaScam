@@ -20,4 +20,11 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)likeButtonPressed:(id)sender {
+
+}
+
+- (IBAction)commentButtonPressed:(UIButton *)sender {
+    
+}
 @end
