@@ -28,7 +28,7 @@ UIImage *image;
         NSData *photoData = UIImageJPEGRepresentation(photo, 0.8f);
         post.mediaData = [PFFile fileWithData:photoData];
         post.user = [PFUser currentUser];
-        [post save];
+        //[post save];
     }
     return post;
 }

@@ -38,11 +38,24 @@
 
 - (IBAction)saveEditsPressed:(UIButton *)sender {
     PFUser *user = [PFUser currentUser];
+    PFQuery *query = [Person query];
+    [query whereKey:@"userName" equalTo:user.username];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (objects.count == 0) {
+        } else {
+            Person *person = objects[0];
+            person.userName = self.userNameTextField.text;
+            person.bio = self.bioTextField.text;
+            person.email = self.emailTextField.text;
+            person.fullName = self.nameTextField.text;
+        }
+    }];
     user [@"fullName"] = self.nameTextField.text;
     user.email = self.emailTextField.text;
     user[@"bio"] = self.bioTextField.text;
     user.username = self.userNameTextField.text;
     [user save];
+
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
@@ -65,7 +78,21 @@
 
         UIImage *editedImage = [info objectForKey:UIImagePickerControllerEditedImage];
         UIImageWriteToSavedPhotosAlbum(editedImage, nil, nil, nil);
-        //self.postingImageView.image = editedImage;
+        PFUser *user = [PFUser currentUser];
+        PFQuery *query = [Person query];
+        [query whereKey:@"userName" equalTo:user.username];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (objects.count == 0) {
+            } else {
+                Person *person = objects[0];
+                NSData *photoData = UIImageJPEGRepresentation(editedImage, 0.8f);
+                person.profilePic = [PFFile fileWithData:photoData];
+                [person saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+
+                }];
+            }
+        }];
+
     }
 
     [self dismissViewControllerAnimated:YES completion:nil];

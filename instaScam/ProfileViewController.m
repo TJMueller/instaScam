@@ -49,7 +49,7 @@
         }];
         }
     }];
-
+    self.bioLabel.text = user[@"bio"];
     self.fullNameLabel.text = user[@"fullName"];
 
 }
@@ -59,6 +59,8 @@
 }
 - (IBAction)logOutButtonPressed:(id)sender {
     [PFUser logOut];
+    [self performSegueWithIdentifier:@"login" sender:self];
+    
 }
 
 /*
