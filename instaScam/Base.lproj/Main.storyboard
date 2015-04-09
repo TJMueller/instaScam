@@ -220,27 +220,27 @@
                                 <exclude reference="uEH-Y6-fhG"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Uef-XD-wVW"/>
+                                <exclude reference="hhM-Qb-TUF"/>
+                                <exclude reference="q4A-ue-vAK"/>
                                 <exclude reference="S11-72-4Hu"/>
                                 <exclude reference="UjZ-AJ-vPa"/>
                                 <exclude reference="oDJ-Be-caL"/>
                                 <exclude reference="bR0-sl-ZAa"/>
                                 <exclude reference="gGO-e8-wyv"/>
                                 <exclude reference="uxk-9a-nCx"/>
-                                <exclude reference="R3Q-5u-1HX"/>
-                                <exclude reference="VGE-9Q-dM0"/>
-                                <exclude reference="gAr-oh-A48"/>
                                 <exclude reference="XUy-aw-StB"/>
                                 <exclude reference="fWC-uy-2sI"/>
                                 <exclude reference="oHb-63-bmX"/>
-                                <exclude reference="Uef-XD-wVW"/>
-                                <exclude reference="hhM-Qb-TUF"/>
-                                <exclude reference="q4A-ue-vAK"/>
-                                <exclude reference="BQZ-EE-7Jl"/>
                                 <exclude reference="MFG-fL-pnE"/>
                                 <exclude reference="cXX-56-a1n"/>
                                 <exclude reference="epu-wD-QZy"/>
+                                <exclude reference="R3Q-5u-1HX"/>
+                                <exclude reference="VGE-9Q-dM0"/>
+                                <exclude reference="gAr-oh-A48"/>
                                 <exclude reference="7Ya-Ww-CiR"/>
                                 <exclude reference="v7m-qU-yWT"/>
+                                <exclude reference="BQZ-EE-7Jl"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -255,27 +255,27 @@
                                 <include reference="uEH-Y6-fhG"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="Uef-XD-wVW"/>
+                                <include reference="hhM-Qb-TUF"/>
+                                <include reference="q4A-ue-vAK"/>
                                 <include reference="S11-72-4Hu"/>
                                 <include reference="UjZ-AJ-vPa"/>
                                 <include reference="oDJ-Be-caL"/>
                                 <include reference="bR0-sl-ZAa"/>
                                 <include reference="gGO-e8-wyv"/>
                                 <include reference="uxk-9a-nCx"/>
-                                <include reference="R3Q-5u-1HX"/>
-                                <include reference="VGE-9Q-dM0"/>
-                                <include reference="gAr-oh-A48"/>
                                 <include reference="XUy-aw-StB"/>
                                 <include reference="fWC-uy-2sI"/>
                                 <include reference="oHb-63-bmX"/>
-                                <include reference="Uef-XD-wVW"/>
-                                <include reference="hhM-Qb-TUF"/>
-                                <include reference="q4A-ue-vAK"/>
-                                <include reference="BQZ-EE-7Jl"/>
                                 <include reference="MFG-fL-pnE"/>
                                 <include reference="cXX-56-a1n"/>
                                 <include reference="epu-wD-QZy"/>
+                                <include reference="R3Q-5u-1HX"/>
+                                <include reference="VGE-9Q-dM0"/>
+                                <include reference="gAr-oh-A48"/>
                                 <include reference="7Ya-Ww-CiR"/>
                                 <include reference="v7m-qU-yWT"/>
+                                <include reference="BQZ-EE-7Jl"/>
                             </mask>
                         </variation>
                     </view>
@@ -317,8 +317,6 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VKn-qG-Lsk">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-
-
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="400" id="q8r-XP-Vgq"/>
                                                     </constraints>
@@ -327,7 +325,8 @@
                                                             <exclude reference="q8r-XP-Vgq"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="31" width="320" height="400"/>
                                                         <mask key="constraints">
                                                             <include reference="q8r-XP-Vgq"/>
                                                         </mask>
@@ -395,7 +394,8 @@
                                                             <exclude reference="tWb-YM-5YQ"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="244" y="439" width="68" height="30"/>
                                                         <mask key="constraints">
                                                             <include reference="3Oe-b9-TeO"/>
                                                             <include reference="tWb-YM-5YQ"/>
@@ -421,14 +421,14 @@
                                                         </mask>
                                                     </variation>
                                                     <variation key="widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="244" y="438" width="68" height="30"/>
+                                                        <rect key="frame" x="142" y="439" width="36" height="30"/>
                                                         <mask key="constraints">
                                                             <include reference="10A-rq-li9"/>
                                                             <include reference="YdJ-hs-coQ"/>
                                                         </mask>
                                                     </variation>
                                                     <connections>
-                                                        <segue destination="kF3-hr-cBC" kind="show" id="5vj-W2-sAv"/>
+                                                        <segue destination="kF3-hr-cBC" kind="show" identifier="LikesSegue" id="5vj-W2-sAv"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -456,15 +456,15 @@
                                                 <mask key="constraints">
                                                     <exclude reference="N5G-yx-lx7"/>
                                                     <exclude reference="iK6-Ll-cmY"/>
-                                                    <exclude reference="Tle-ua-eXf"/>
-                                                    <exclude reference="ahc-SA-OpC"/>
-                                                    <exclude reference="i83-n1-6TI"/>
-                                                    <exclude reference="Uq7-IY-dP0"/>
-                                                    <exclude reference="YoP-fp-AVI"/>
                                                     <exclude reference="EaB-1g-9VT"/>
                                                     <exclude reference="TQF-VF-SYg"/>
                                                     <exclude reference="Rkz-ha-u6i"/>
                                                     <exclude reference="zHS-wY-E5R"/>
+                                                    <exclude reference="Uq7-IY-dP0"/>
+                                                    <exclude reference="YoP-fp-AVI"/>
+                                                    <exclude reference="Tle-ua-eXf"/>
+                                                    <exclude reference="ahc-SA-OpC"/>
+                                                    <exclude reference="i83-n1-6TI"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -478,22 +478,22 @@
                                                 <mask key="constraints">
                                                     <include reference="N5G-yx-lx7"/>
                                                     <include reference="iK6-Ll-cmY"/>
-
-                                                    <include reference="Tle-ua-eXf"/>
-                                                    <include reference="ahc-SA-OpC"/>
-                                                    <include reference="i83-n1-6TI"/>
-                                                    <include reference="Uq7-IY-dP0"/>
-                                                    <include reference="YoP-fp-AVI"/>
                                                     <include reference="EaB-1g-9VT"/>
                                                     <include reference="TQF-VF-SYg"/>
                                                     <include reference="Rkz-ha-u6i"/>
                                                     <include reference="zHS-wY-E5R"/>
+                                                    <include reference="Uq7-IY-dP0"/>
+                                                    <include reference="YoP-fp-AVI"/>
+                                                    <include reference="Tle-ua-eXf"/>
+                                                    <include reference="ahc-SA-OpC"/>
+                                                    <include reference="i83-n1-6TI"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="homeCellImageView" destination="VKn-qG-Lsk" id="iNY-Ns-Ela"/>
-                                            <segue destination="kF3-hr-cBC" kind="showDetail" identifier="HomeDetailSegue" id="qYb-BB-Cef"/>
+                                            <outlet property="userLabel" destination="XTO-up-Qd9" id="KOV-Cw-agq"/>
+                                            <segue destination="kF3-hr-cBC" kind="showDetail" identifier="CommentsSegue" id="qYb-BB-Cef"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -699,19 +699,19 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="132" height="130"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="95" height="95"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W10-rP-wzu">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="0.0" y="0.0" width="132" height="130"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                     </variation>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <size key="customSize" width="132" height="130"/>
+                                        <size key="customSize" width="95" height="95"/>
                                         <variation key="default">
                                             <mask key="subviews">
                                                 <exclude reference="W10-rP-wzu"/>
@@ -737,6 +737,10 @@
                                         <include reference="nbW-wq-Xhp"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="sLJ-Al-olj" id="GX1-Xb-X0j"/>
+                                    <outlet property="delegate" destination="sLJ-Al-olj" id="ECL-Vv-hHd"/>
+                                </connections>
                             </collectionView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3UE-PZ-YX7">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>

@@ -7,13 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol HomeTableViewCellDelegate <NSObject>
+
+@optional
+
+- (void)homeTableViewCell:(id)cell didTapCommentButton:(UIButton *)button;
+- (void)homeTableViewCell:(id)cell didTapLikeButton:(UIButton *)button;
+
+@end
 
 @interface HomeTableViewCell : UITableViewCell
 
+@property (nonatomic, assign) id <HomeTableViewCellDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIImageView *homeCellImageView;
-
-- (IBAction)likeButtonPressed:(UIButton *)sender;
-
-- (IBAction)commentButtonPressed:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UILabel *userLabel;
 
 @end

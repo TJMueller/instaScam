@@ -16,15 +16,14 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 - (IBAction)likeButtonPressed:(id)sender {
-
+    [self.delegate homeTableViewCell:self didTapLikeButton:sender];
 }
 
-- (IBAction)commentButtonPressed:(UIButton *)sender {
-    
+- (IBAction)commentButtonPressed:(id)sender {
+    [self.delegate homeTableViewCell:self didTapCommentButton:sender];
 }
+
 @end

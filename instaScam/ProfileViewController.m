@@ -7,10 +7,11 @@
 //
 
 #import "ProfileViewController.h"
+#import "ProfileCollectionViewCell.h"
 #import <Parse/Parse.h>
 #import "Person.h"
 
-@interface ProfileViewController ()
+@interface ProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicImageView;
 @property (weak, nonatomic) IBOutlet UILabel *fullNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *postsLabel;
@@ -19,13 +20,15 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet UITextView *bioLabel;
 
+@property NSArray *postsArray;
+
 @end
 
 @implementation ProfileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.postsArray = [NSArray new];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -60,17 +63,15 @@
 - (IBAction)logOutButtonPressed:(id)sender {
     [PFUser logOut];
     [self performSegueWithIdentifier:@"login" sender:self];
-    
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (ProfileCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    ProfileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellID" forIndexPath:indexPath];
+    return cell;
 }
-*/
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.postsArray.count;
+}
 
 @end

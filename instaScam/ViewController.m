@@ -35,7 +35,6 @@
     self.usernameTextField.delegate = self;
     self.passwordTextField.delegate = self;
     self.passwordConfirmationTextField.delegate = self;
-    
 
 }
 
@@ -125,8 +124,8 @@
         self.signUp = !self.signUp;
         self.logIn = !self.logIn;
     }
-
 }
+
 - (IBAction)onSignUpButtonPressed:(id)sender {
     [self.usernameTextField resignFirstResponder];
     [self.emailTextField resignFirstResponder];
