@@ -10,6 +10,7 @@
 #import "ProfileCollectionViewCell.h"
 #import <Parse/Parse.h>
 #import "Person.h"
+#import "Post.h"
 
 @interface ProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicImageView;
@@ -19,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *followingLabel;
 @property (strong, nonatomic) IBOutlet UITextView *bioLabel;
 
+@property NSMutableArray *postsArray;
 
 @end
 
@@ -28,7 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    postsArray = [NSMutableArray new];
+    self.postsArray = [NSMutableArray new];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -39,30 +41,26 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (objects.count == 0) {
         } else {
-        Person *person = objects[0];
-        self.followersLabel.text = [NSString stringWithFormat:@"Followers: %lu", (unsigned long)person.followers.count];
-        self.followingLabel.text = [NSString stringWithFormat:@"Following: %lu", (unsigned long)person.following.count];
-        self.postsLabel.text = [NSString stringWithFormat:@"Posts: %lu", (unsigned long)person.posts.count];
-        [person.profilePic getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-            if (!error) {
-                self.profilePicImageView.image = [UIImage imageWithData:data];
-            } else {
-                NSLog(@"%@", error);
-            }
-        }];
+            Person *person = objects[0];
+            self.followersLabel.text = [NSString stringWithFormat:@"Followers: %lu", (unsigned long)person.followers.count];
+            self.followingLabel.text = [NSString stringWithFormat:@"Following: %lu", (unsigned long)person.following.count];
+            self.postsLabel.text = [NSString stringWithFormat:@"Posts: %lu", (unsigned long)person.posts.count];
+            [person.profilePic getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                if (!error) {
+                    self.profilePicImageView.image = [UIImage imageWithData:data];
+                } else {
+                    NSLog(@"%@", error);
+                }
+            }];
         }
     }];
     self.bioLabel.text = user[@"bio"];
     self.fullNameLabel.text = user[@"fullName"];
     [self getPosts];
-    [collectionView reloadData];
-    collectionView.delegate = self;
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
+    [self.collectionView reloadData];
+    self.collectionView.delegate = self;
+}
 
 - (void)getPosts
 {
@@ -84,8 +82,6 @@
              NSLog(@"%@", error.description);
          }
      }];
-
-
 }
 //- (IBAction)logOutButtonPressed:(id)sender {
 //    [PFUser logOut];
@@ -100,9 +96,7 @@
     ProfileCollectionViewCell *cell = [collectionViewType dequeueReusableCellWithReuseIdentifier:@"CellID" forIndexPath:indexPath];
 
     Post *post = postsArray[indexPath.row];
-
     cell.imageView.image = [post convertToImage];
-
     return cell;
 }
 
