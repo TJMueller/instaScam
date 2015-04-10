@@ -27,19 +27,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self getPosts];
+
+
+}
+-(void)viewWillAppear:(BOOL)animated{
+    PFQuery *query =[Person query];
+    [query whereKey:@"userID" equalTo:[PFUser currentUser].objectId];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            self.person = objects[0];
+            [self getPosts];
+//            PFQuery *query1 = [Person query];
+//            [query1 whereKey:@"userID" containedIn:self.person.following];
+        }
+
+    }];
 }
 
 - (void)getPosts {
     PFQuery *query = [Post query];
     NSMutableArray *posts = [NSMutableArray new];
-
+    [query whereKey:@"personID" containedIn:self.person.following];
+    [query orderByAscending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             for (Post *post in objects) {
                 [posts addObject:post];
             }
-
             self.postsArray = [NSArray arrayWithArray:posts];
             [self.homeTableView reloadData];
         } else {
@@ -76,7 +90,8 @@
 //    if ([segue.identifier  isEqual: @"LikesSegue"]) {
 //        homeDetailVC.likesArray = //array of users who have "liked the post"
 //    } else {
-        homeDetailVC.commentsArray = post.comments;
+//        homeDetailVC.commentsArray = post.comments;
+    homeDetailVC.post = post;
 //    }
 }
 
@@ -102,9 +117,10 @@
                                                               UITextField *textField = commentController.textFields.firstObject;
                                                               Comment *comment = [Comment object];
                                                               [comment createComment:comment WithString:textField.text];
-                                                              comment.personID = [PFUser currentUser].objectId;
-                                                              [comment save];
-                                                              [post addObject:comment.objectId forKey:@"comments"];
+                                                              //                                                              comment.personID = [PFUser currentUser].objectId;
+                                                              //                                                              [comment save];
+                                                              NSString *formattedComment = [NSString stringWithFormat:@"%@: %@",[PFUser currentUser].username, comment.commentText];
+                                                              [post addObject:formattedComment forKey:@"comments"];
                                                               [post save];
                                                           }];
 

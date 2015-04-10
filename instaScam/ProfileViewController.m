@@ -70,10 +70,7 @@
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
          if(!error) {
-             for (Post *post in objects) {
-                 [self.postsArray addObject:post];
-                 [self.collectionView reloadData];
-             }
+             self.postsArray = [[NSMutableArray alloc] initWithArray:objects];
          } else {
              NSLog(@"%@", error.description);
          }

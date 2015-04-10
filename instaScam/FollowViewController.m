@@ -7,9 +7,15 @@
 //
 
 #import "FollowViewController.h"
+#import "Person.h"
+#import <Parse/Parse.h>
+#import "FollowTableViewCell.h"
 
-@interface FollowViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface FollowViewController () <UITableViewDelegate, UITableViewDataSource,FollowTableViewCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property NSArray *persons;
+@property Person *person;
+@property NSMutableArray *activeArray;
 
 @end
 
@@ -17,16 +23,64 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    PFQuery *query = [Person query];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        self.persons = objects;
+        [self.tableView reloadData];
+    }];
+    PFQuery *query1 = [Person query];
+    [query1 whereKey:@"userID" equalTo:[PFUser currentUser].objectId];
+    [query1 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        self.person = objects[0];
+        self.activeArray = [[NSMutableArray alloc] initWithArray:self.person.following];
+        [self.tableView reloadData];
+    }];
+}
+
+-(void)FollowTableViewCell:(FollowTableViewCell *)cell didTapRollowButton:(UIButton *)button atRow:(NSInteger)row person:(Person *)person{
+    NSLog(@"%li", (long)row);
+    if (cell.following) {
+        [self.activeArray removeObject:person.userID];
+    } else {
+        [self.activeArray addObject:person.userID];
+    }
+    cell.following = !cell.following;
+
+    [self.tableView reloadData];
+}
+
+
+
+
+-(void)viewWillDisappear:(BOOL)animated {
+    self.person.following = self.activeArray;
+    [self.person save];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.persons.count;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
+-(FollowTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    FollowTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
+    cell.indexPathRow = indexPath.row;
+    cell.person = self.persons[indexPath.row];
+    cell.delegate = self;
+    Person *person = self.persons[indexPath.row];
+    if ([self.activeArray containsObject:person.userID]){
+        cell.following = true;
+    }
+    cell.textLabel.text = person.userName;
+    if (cell.following) {
+        cell.backgroundColor = [UIColor greenColor];
+    } else {
+        cell.backgroundColor = [UIColor whiteColor];
+    }
     return cell;
+
 }
 
 @end

@@ -20,7 +20,7 @@
     // Configure the view for the selected state
 }
 - (IBAction)followButtonPressed:(UIButton *)sender {
-    
+    [self.delegate FollowTableViewCell:self didTapRollowButton:sender atRow:self.indexPathRow person:self.person];
 }
 
 @end

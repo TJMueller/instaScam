@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = self.post.objectId;
+    //self.navigationItem.title = self.post.objectId;
     NSLog(@"%@", self.commentsArray.firstObject);
 }
 
@@ -52,14 +52,14 @@
 //    } else {
 //        return self.commentsArray.count;
 //    }
-    return self.commentsArray.count;
+    return self.post.comments.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
-    Comment *comment = self.commentsArray[indexPath.row];
-    NSLog(@"%@", comment.objectId);
-//    cell.textLabel.text = comment.objectId;
+//    Comment *comment = self.commentsArray[indexPath.row];
+//    NSLog(@"%@", comment.objectId);
+    cell.textLabel.text = self.post.comments[indexPath.row];
     return cell;
 }
 
