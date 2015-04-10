@@ -1292,6 +1292,30 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4V2-MT-E6T" id="FON-0c-t9B">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFi-Au-VZJ">
+                                                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                    <state key="normal" title="Follow">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <variation key="widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="325" y="16" width="67" height="35"/>
+                                                    </variation>
+                                                    <connections>
+                                                        <action selector="followButtonPressed:" destination="4V2-MT-E6T" eventType="touchUpInside" id="Bma-e1-cMV"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="YFi-Au-VZJ"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="YFi-Au-VZJ"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -1323,7 +1347,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Or-MB-emI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-352.5" y="1242"/>
+            <point key="canvasLocation" x="-352.5" y="1241"/>
         </scene>
         <!--Camera-->
         <scene sceneID="dBO-HM-sPN">
@@ -1521,7 +1545,7 @@
         <image name="Home_InstaScam" width="142" height="141"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AT6-p8-2xF"/>
         <segue reference="qYb-BB-Cef"/>
+        <segue reference="SFA-go-7hP"/>
     </inferredMetricsTieBreakers>
 </document>

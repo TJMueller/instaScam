@@ -19,5 +19,8 @@
 
     // Configure the view for the selected state
 }
+- (IBAction)followButtonPressed:(UIButton *)sender {
+    
+}
 
 @end

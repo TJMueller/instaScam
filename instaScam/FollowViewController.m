@@ -24,6 +24,9 @@
     return 1;
 }
 
-
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
+    return cell;
+}
 
 @end
