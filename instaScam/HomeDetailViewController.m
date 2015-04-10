@@ -13,7 +13,6 @@
 @interface HomeDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property BOOL likesOrComments;
 
 @end
 
@@ -52,14 +51,22 @@
 //    } else {
 //        return self.commentsArray.count;
 //    }
-    return self.post.comments.count;
+    if (self.Comments) {
+        return self.post.comments.count;
+    } else {
+        return self.post.likes.count;
+    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
 //    Comment *comment = self.commentsArray[indexPath.row];
 //    NSLog(@"%@", comment.objectId);
-    cell.textLabel.text = self.post.comments[indexPath.row];
+    if (self.Comments) {
+        cell.textLabel.text = self.post.comments[indexPath.row];
+    } else {
+        cell.textLabel.text = self.post.likes[indexPath.row];
+    }
     return cell;
 }
 

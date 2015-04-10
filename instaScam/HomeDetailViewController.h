@@ -14,5 +14,6 @@
 @property Post *post;
 @property NSArray *likesArray;
 @property NSArray *commentsArray;
+@property BOOL Comments;
 
 @end

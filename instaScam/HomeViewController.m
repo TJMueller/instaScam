@@ -86,13 +86,13 @@
     Post *post = self.postsArray[indexPath.row];
 
     HomeDetailViewController *homeDetailVC = segue.destinationViewController;
-
-//    if ([segue.identifier  isEqual: @"LikesSegue"]) {
-//        homeDetailVC.likesArray = //array of users who have "liked the post"
-//    } else {
-//        homeDetailVC.commentsArray = post.comments;
     homeDetailVC.post = post;
-//    }
+
+    if ([segue.identifier  isEqual: @"CommentsSegue"]) {
+        homeDetailVC.Comments = TRUE;
+    } else {
+        homeDetailVC.Comments = false;
+    }
 }
 
 -(IBAction)unwindFromSegue:(UIStoryboardSegue *)segue {
@@ -138,8 +138,26 @@
     }];
 }
 
-- (void)homeTableViewCell:(id)cell didTapLikeButton:(UIButton *)button {
+- (void)homeTableViewCell:(HomeTableViewCell *)cell didTapLikeButton:(UIButton *)button {
     
+    Post *post = self.postsArray[cell.indexPathRow];
+    PFUser *user = [PFUser currentUser];
+
+    if(!post.likes) {
+        post.likes = @[];
+    }
+
+    NSMutableArray *likes = [NSMutableArray arrayWithArray:post.likes];
+
+    if (![likes containsObject:user.username]) {
+        [likes addObject:user.username];
+    } else {
+        [likes removeObject:user.username];
+
+    }
+
+    post.likes = [NSArray arrayWithArray:likes];
+    [post save];
 }
 
 @end

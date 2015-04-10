@@ -1537,7 +1537,7 @@
         <image name="Home_InstaScam" width="142" height="141"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qYb-BB-Cef"/>
         <segue reference="SFA-go-7hP"/>
+        <segue reference="qYb-BB-Cef"/>
     </inferredMetricsTieBreakers>
 </document>
