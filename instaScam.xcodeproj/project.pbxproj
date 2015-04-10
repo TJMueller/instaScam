@@ -43,6 +43,8 @@
 		D6C833E51AD46C05006BB213 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C833E41AD46C05006BB213 /* HomeTableViewCell.m */; };
 		D6C833E81AD46F92006BB213 /* HomeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C833E71AD46F92006BB213 /* HomeDetailViewController.m */; };
 		D6EA8D8D1AD6D63700C50EE6 /* ProfileCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EA8D8C1AD6D63700C50EE6 /* ProfileCollectionViewCell.m */; };
+		D6EA8D901AD8163300C50EE6 /* FollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EA8D8F1AD8163300C50EE6 /* FollowViewController.m */; };
+		D6EA8D931AD8166400C50EE6 /* FollowTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EA8D921AD8166400C50EE6 /* FollowTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +110,10 @@
 		D6C833E71AD46F92006BB213 /* HomeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDetailViewController.m; sourceTree = "<group>"; };
 		D6EA8D8B1AD6D63700C50EE6 /* ProfileCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCollectionViewCell.h; sourceTree = "<group>"; };
 		D6EA8D8C1AD6D63700C50EE6 /* ProfileCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCollectionViewCell.m; sourceTree = "<group>"; };
+		D6EA8D8E1AD8163300C50EE6 /* FollowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowViewController.h; sourceTree = "<group>"; };
+		D6EA8D8F1AD8163300C50EE6 /* FollowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowViewController.m; sourceTree = "<group>"; };
+		D6EA8D911AD8166400C50EE6 /* FollowTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowTableViewCell.h; sourceTree = "<group>"; };
+		D6EA8D921AD8166400C50EE6 /* FollowTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +193,10 @@
 				D6EA8D8C1AD6D63700C50EE6 /* ProfileCollectionViewCell.m */,
 				D69322681AD57F2C00FFB7C1 /* EditProfileViewController.h */,
 				D69322691AD57F2C00FFB7C1 /* EditProfileViewController.m */,
+				D6EA8D8E1AD8163300C50EE6 /* FollowViewController.h */,
+				D6EA8D8F1AD8163300C50EE6 /* FollowViewController.m */,
+				D6EA8D911AD8166400C50EE6 /* FollowTableViewCell.h */,
+				D6EA8D921AD8166400C50EE6 /* FollowTableViewCell.m */,
 				231C5E8C1AD590C300E6AB2C /* Person.h */,
 				231C5E8D1AD590C300E6AB2C /* Person.m */,
 				231C5E8F1AD590CF00E6AB2C /* Post.h */,
@@ -363,6 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6EA8D931AD8166400C50EE6 /* FollowTableViewCell.m in Sources */,
 				D6EA8D8D1AD6D63700C50EE6 /* ProfileCollectionViewCell.m in Sources */,
 				5E22278C1AD4884900BE2AF6 /* ViewController.m in Sources */,
 				5E22278B1AD4883900BE2AF6 /* AppDelegate.m in Sources */,
@@ -372,6 +383,7 @@
 				D6C833E51AD46C05006BB213 /* HomeTableViewCell.m in Sources */,
 				D693226D1AD57F4500FFB7C1 /* CameraViewController.m in Sources */,
 				231C5E941AD590DD00E6AB2C /* Comment.m in Sources */,
+				D6EA8D901AD8163300C50EE6 /* FollowViewController.m in Sources */,
 				2374D3091AD3317A00F7B3DB /* main.m in Sources */,
 				231C5E911AD590CF00E6AB2C /* Post.m in Sources */,
 				D69322701AD57F5200FFB7C1 /* ProfileViewController.m in Sources */,
