@@ -13,10 +13,10 @@
 #import "HomeTableViewCell.h"
 #import "Post.h"
 #import "Person.h"
+#import "Comment.h"
 
-@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, HomeTableViewCellDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *homeTableView;
 
 @property NSArray *postsArray;
 @property Person *person;
@@ -35,12 +35,9 @@
     NSMutableArray *posts = [NSMutableArray new];
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"objects.count == %li", objects.count);
-        NSLog(@"error == %@", error);
         if (!error) {
             for (Post *post in objects) {
                 [posts addObject:post];
-                NSLog(@"post.objectId == %@",post.objectId);
             }
 
             self.postsArray = [NSArray arrayWithArray:posts];
@@ -59,6 +56,7 @@
 
 -(HomeTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
+    cell.indexPathRow = indexPath.row;
     cell.delegate = self;
     Post *post = self.postsArray[indexPath.row];
 
@@ -74,13 +72,12 @@
     Post *post = self.postsArray[indexPath.row];
 
     HomeDetailViewController *homeDetailVC = segue.destinationViewController;
-    homeDetailVC.post = post;
 
-    if ([segue.identifier  isEqual: @"LikesSegue"]) {
+//    if ([segue.identifier  isEqual: @"LikesSegue"]) {
 //        homeDetailVC.likesArray = //array of users who have "liked the post"
-    } else {
-//        homeDetailVC.commentsArray = //array of comments on the post, and the users who wrote those comments
-    }
+//    } else {
+        homeDetailVC.commentsArray = post.comments;
+//    }
 }
 
 -(IBAction)unwindFromSegue:(UIStoryboardSegue *)segue {
@@ -89,7 +86,9 @@
 
 
 //somehow need to integrate NSIndexPath to tell which post to add the comment to; same for the liking an image
-- (void)homeTableViewCell:(id)cell didTapCommentButton:(UIButton *)button {
+- (void)homeTableViewCell:(id)cell didTapCommentButton:(UIButton *)button atRow:(NSInteger)row {
+
+    Post *post = self.postsArray[row];
     UIAlertController *commentController = [UIAlertController alertControllerWithTitle:@"Add comment" message:nil preferredStyle:UIAlertControllerStyleAlert];
 
     [commentController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
@@ -101,8 +100,12 @@
                                                           handler:^(UIAlertAction *action) {
 
                                                               UITextField *textField = commentController.textFields.firstObject;
-                                                              //                                   Comment *comment = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([Comment class]) inManagedObjectContext:self.moc];
-                                                              //                                   comment.comment = textField.text;
+                                                              Comment *comment = [Comment object];
+                                                              [comment createComment:comment WithString:textField.text];
+                                                              comment.personID = [PFUser currentUser].objectId;
+                                                              [comment save];
+                                                              [post addObject:comment.objectId forKey:@"comments"];
+                                                              [post save];
                                                           }];
 
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"

@@ -8,6 +8,7 @@
 
 #import "HomeDetailViewController.h"
 #import "Person.h"
+#import "Comment.h"
 
 @interface HomeDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -23,8 +24,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = self.post.objectId;
-    NSLog(@"%@", self.post.objectId);
+    NSLog(@"%@", self.commentsArray.firstObject);
 }
+
+//- (void)getComments {
+//    PFQuery *query = [Post query];
+//    NSMutableArray *comments = [NSMutableArray new];
+//
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error) {
+//            for (Comment *comment in objects) {
+//                [comments addObject:comment];
+//            }
+//
+//            self.commentsArray = [NSArray arrayWithArray:comments];
+//            [self.tableView reloadData];
+//        } else {
+//            NSLog(@"%@", error);
+//        }
+//    }];
+//}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
@@ -33,12 +52,14 @@
 //    } else {
 //        return self.commentsArray.count;
 //    }
-    return 5;
+    return self.commentsArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellID"];
-
+    Comment *comment = self.commentsArray[indexPath.row];
+    NSLog(@"%@", comment.objectId);
+//    cell.textLabel.text = comment.objectId;
     return cell;
 }
 

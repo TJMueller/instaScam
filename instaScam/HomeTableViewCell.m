@@ -23,7 +23,7 @@
 }
 
 - (IBAction)commentButtonPressed:(id)sender {
-    [self.delegate homeTableViewCell:self didTapCommentButton:sender];
+    [self.delegate homeTableViewCell:self didTapCommentButton:sender atRow:self.indexPathRow];
 }
 
 @end

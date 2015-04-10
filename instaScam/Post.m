@@ -37,7 +37,6 @@ UIImage *image;
 }
 
 - (UIImage *)convertToImage {
-    NSLog(@"fetching image");
     return [UIImage imageWithData:[self.mediaData getData]];
 
 }

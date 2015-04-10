@@ -53,13 +53,12 @@
     [super viewDidAppear:YES];
     PFUser *user = [PFUser currentUser];
     if (user.username != nil) {
-        NSLog(@"I remember");
         self.shouldSignUp = YES;
 
 
 //currentUser is our object
-        NSString *phone = [[PFUser currentUser] objectForKey:@"phone"];
-        NSLog(@"The number is %@", phone);
+//        NSString *phone = [[PFUser currentUser] objectForKey:@"phone"];
+//        NSLog(@"The number is %@", phone);
 
 // posting a comment (with post pointer)
         //PFUser * user = [PFUser currentUser];

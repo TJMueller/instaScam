@@ -13,12 +13,11 @@
 
 
 @property (nonatomic, strong) NSString *commentText;
-@property (nonatomic, strong) PFUser *user;
-@property (nonatomic, strong) Post *post;
-
+@property (nonatomic, strong) NSString *postID;
+@property (nonatomic, strong) NSString *personID;
 
 + (NSString *)parseClassName;
 
-
+- (instancetype)createComment:(Comment *)comment WithString:(NSString *)commentText;
 
 @end
