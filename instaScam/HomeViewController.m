@@ -75,6 +75,7 @@
     Post *post = self.postsArray[indexPath.row];
 
     cell.homeCellImageView.image = [post convertToImage];
+    cell.userLabel.text = post.title;
 
     return cell;
 }

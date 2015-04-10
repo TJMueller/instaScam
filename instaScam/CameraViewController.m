@@ -46,6 +46,7 @@
     Post *post = [Post createPostWithPhoto:self.postingImageView.image];
     //post.comments = [[NSArray alloc]initWithObjects:self.commentTextField.text, nil ];
     post.personID = [PFUser currentUser].objectId;
+    post.title = self.commentTextField.text;
     [post save];
 }
 
